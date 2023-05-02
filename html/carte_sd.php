@@ -36,6 +36,14 @@
                 <tbody>
                     <?php
                     include_once "connexion.php";
+
+                    /* Suppression ligne */
+                    if (isset($_POST['delete_id'])) {
+                        $id = $_POST['delete_id'];
+                        mysqli_query($CONNEXION, "DELETE FROM sae203_carte_sd WHERE id_carte_sd=$id");
+                    }
+
+
                     $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_carte_sd");
                     if (mysqli_num_rows($sql) == 0) {
                         echo "Aucune carte SD enregistrée";
@@ -55,13 +63,18 @@
                                 <td><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
                                 <td><?= $row['date_mise_en_service'] ?></td>
                                 <td>
-                                    <div><a>Modifier</a><a>Supprimer</a></div>
+                                    <div>
+                                        <a href="#">Modifier</a>
+                                        <form method="POST">
+                                            <input type="hidden" name="delete_id" value="<?= $row['id_carte_sd'] ?>">
+                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                     <?php
                         }
                     }
-
                     ?>
                 </tbody>
 

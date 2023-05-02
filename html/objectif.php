@@ -33,29 +33,38 @@
                 <tbody>
                     <?php
                     include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_objectif");
-                    if(mysqli_num_rows($sql)==0){
-                        echo "Aucun objectif enregistré";
+                    /* Suppression ligne */
+                    if (isset($_POST['delete_id'])) {
+                        $id = $_POST['delete_id'];
+                        mysqli_query($CONNEXION, "DELETE FROM sae203_objectif WHERE id_objectif=$id");
                     }
-                    else{
-                        while($row = mysqli_fetch_assoc($sql)){
-                            ?>
+
+
+                    $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_objectif");
+                    if (mysqli_num_rows($sql) == 0) {
+                        echo "Aucun objectif enregistré";
+                    } else {
+                        while ($row = mysqli_fetch_assoc($sql)) {
+                    ?>
                             <tr>
-                                <td><?=$row['id_objectif']?></td>
-                                <td><?=$row['marque']?></td>
-                                <td><?=$row['modele']?></td>
-                                <td><?=$row['description']?></td>
-                                <td><?=$row['reference']?></td>
-                                <td><?=$row['disponible'] == 1 ? "Oui" : "Non"?></td>
-                                <td><?=$row['date_mise_en_service']?></td>
+                                <td><?= $row['id_objectif'] ?></td>
+                                <td><?= $row['marque'] ?></td>
+                                <td><?= $row['modele'] ?></td>
+                                <td><?= $row['description'] ?></td>
+                                <td><?= $row['reference'] ?></td>
+                                <td><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
+                                <td><?= $row['date_mise_en_service'] ?></td>
                                 <td>
                                     <div>
-                                        <a>Modifier</a>
-                                        <a>Supprimer</a>
+                                        <a href="#">Modifier</a>
+                                        <form method="POST">
+                                            <input type="hidden" name="delete_id" value="<?= $row['id_objectif'] ?>">
+                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
-                            <?php
+                    <?php
                         }
                     }
                     ?>

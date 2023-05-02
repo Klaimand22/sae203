@@ -26,40 +26,16 @@
                         <option value="">Sélectionnez un client</option>
                         <?php
                         require_once('connexion.php');
-                        $sql = "SELECT * FROM client ORDER BY Nom ASC";
-                        $result = mysqli_query($conn, $sql);
+                        $sql = "SELECT * FROM sae203_client ORDER BY nom ASC";
+                        $result = mysqli_query($CONNEXION, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<option value='" . $row["id_client"] . "'>" . $row["Prenom"] . " " . $row["Nom"] . "</option>";
+                            echo "<option value='" . $row["id_client"] . "'>" . $row["prenom"] . " " . $row["nom"] . "</option>";
                         }
                         mysqli_free_result($result);
-                        mysqli_close($conn);
-                        ?>
-
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="materiel_id">Matériel</label>
-                    <select name="materiel_id" required>
-                        <option value="">Sélectionnez un matériel</option>
-                        <?php
-                        require_once('connexion.php');
-                        $sql = "SELECT * FROM boitier UNION SELECT * FROM objectif UNION SELECT * FROM carte_sd UNION SELECT * FROM accessoire ORDER BY nom ASC";
-                        $result = $conn->query($sql);
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row["id"] . "'>" . $row["nom"] . " - " . $row["marque"] . " - " . $row["modele"] . "</option>";
-                        }
+                        mysqli_close($CONNEXION);
                         ?>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="date_debut">Date de début</label>
-                    <input type="date" name="date_debut" required>
-                </div>
-                <div class="form-group">
-                    <label for="date_fin">Date de fin</label>
-                    <input type="date" name="date_fin" required>
-                </div>
-                <button type="submit">Valider</button>
             </form>
         </div>
     </main>

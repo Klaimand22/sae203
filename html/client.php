@@ -15,11 +15,11 @@
 </head>
 
 <body>
-<header><?php include('menu-nav.php'); ?></header>
+    <header><?php include('menu-nav.php'); ?></header>
     <main>
 
         <div class="tableau-client">
-        <h1>Liste client</h1>
+            <h1>Liste client</h1>
             <table>
                 <thead>
                     <tr>
@@ -31,34 +31,50 @@
                         <th>Age</th>
                         <th>Email</th>
                         <th>Actions Rapides</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_client");
-                    if(mysqli_num_rows($sql)==0){
-                        echo "Aucun client enregistré";
-                    }
-                    else{
-                        while($row = mysqli_fetch_assoc($sql)){
-                            ?>
-                            <tr>
 
-                            <td><?=$row['id_client']?></td>
-                            <td><?=$row['nom']?></td>
-                            <td><?=$row['prenom']?></td>
-                            <td><?=$row['adresse']?></td>
-                            <td><?=$row['telephone']?></td>
-                            <td><?=$row['age']?></td>
-                            <td><?=$row['email']?></td>
-                            <td><div><a>Modifier</a><a>Supprimer</a></div></td>
+
+                    /* Suppression ligne */
+                    if (isset($_POST['delete_id'])) {
+                        $id = $_POST['delete_id'];
+                        mysqli_query($CONNEXION, "DELETE FROM sae203_client WHERE id_client=$id");
+                    }
+
+
+
+                    $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_client");
+                    if (mysqli_num_rows($sql) == 0) {
+                        echo "Aucun client enregistré";
+                    } else {
+                        while ($row = mysqli_fetch_assoc($sql)) {
+                    ?>
+                            <tr>
+                                <td><?= $row['id_client'] ?></td>
+                                <td><?= $row['nom'] ?></td>
+                                <td><?= $row['prenom'] ?></td>
+                                <td><?= $row['adresse'] ?></td>
+                                <td><?= $row['telephone'] ?></td>
+                                <td><?= $row['age'] ?></td>
+                                <td><?= $row['email'] ?></td>
+                                <td>
+                                    <div>
+                                        <a href="#">Modifier</a>
+                                        <form method="POST">
+                                            <input type="hidden" name="delete_id" value="<?= $row['id_client'] ?>">
+                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
-                            <?php
+                    <?php
                         }
                     }
-
-                        ?>
+                    ?>
                 </tbody>
 
             </table>
@@ -66,7 +82,7 @@
             <a href="add_client.php" class="btn-add">Ajouter un <?php echo str_replace('.php', '', basename($_SERVER['SCRIPT_NAME'])); ?></a>
 
 
-            </div>
+        </div>
 
 
     </main>
