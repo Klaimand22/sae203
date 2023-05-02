@@ -46,3 +46,5 @@ CREATE TABLE emprunt (
   FOREIGN KEY (id_client) REFERENCES client(id_client),
   FOREIGN KEY (id_boitier) REFERENCES boitier(id_boitier)
 );
+
+/* ceci est un test */
