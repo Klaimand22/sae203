@@ -1,0 +1,48 @@
+/* Création table Boitier */
+CREATE TABLE boitier (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  marque VARCHAR(255) NOT NULL,
+  modele VARCHAR(255) NOT NULL,
+  description TEXT,
+  reference VARCHAR(255),
+  prix DECIMAL(10, 2),
+  disponible BOOLEAN NOT NULL DEFAULT true,
+  date_achat DATE,
+  date_mise_en_service DATE,
+  image_url VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE objectif (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    marque VARCHAR(255),
+    modele VARCHAR(255),
+    description VARCHAR(255),
+    reference VARCHAR(255),
+    disponible BOOLEAN,
+    date_mise_en_service DATE
+);
+
+
+CREATE TABLE carte_sd (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    marque VARCHAR(255) NOT NULL,
+    modele VARCHAR(255) NOT NULL,
+    capacite VARCHAR(50) NOT NULL,
+    classe VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    reference VARCHAR(50) NOT NULL,
+    disponible BOOLEAN NOT NULL DEFAULT true,
+    date_mise_en_service DATE NOT NULL
+);
+
+CREATE TABLE emprunt (
+  id_emprunt INT PRIMARY KEY AUTO_INCREMENT,
+  id_client INT NOT NULL,
+  id_boitier INT NOT NULL,
+  date_emprunt DATE NOT NULL,
+  date_retour DATE,
+  FOREIGN KEY (id_client) REFERENCES client(id_client),
+  FOREIGN KEY (id_boitier) REFERENCES boitier(id_boitier)
+);
