@@ -60,7 +60,7 @@
                                 <td><?= $row['date_mise_en_service'] ?></td>
                                 <td>
                                     <div>
-                                        <a href="#">Modifier</a>
+                                    <a href="modifier_boitier.php?id=<?= $row['id_boitier'] ?>">Modifier</a>
                                         <form method="POST">
                                             <input type="hidden" name="delete_id" value="<?= $row['id_boitier'] ?>">
                                             <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>

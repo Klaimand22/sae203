@@ -17,28 +17,47 @@
         <?php include('menu-nav.php'); ?>
     </header>
     <main>
-        <div class="container">
-            <h1>Emprunt de matériel</h1>
-            <form method="POST" action="add_emprunt.php">
-                <div class="form-group">
-                    <label for="client_id">Client</label>
-                    <select name="client_id" required>
-                        <option value="">Sélectionnez un client</option>
-                        <?php
-                        require_once('connexion.php');
-                        $sql = "SELECT * FROM sae203_client ORDER BY nom ASC";
-                        $result = mysqli_query($CONNEXION, $sql);
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<option value='" . $row["id_client"] . "'>" . $row["prenom"] . " " . $row["nom"] . "</option>";
-                        }
-                        mysqli_free_result($result);
-                        mysqli_close($CONNEXION);
-                        ?>
-                    </select>
-                </div>
-            </form>
-        </div>
+        <?php
+        include_once "connexion.php";
+
+        ?>
+
+
+        <form method="POST">
+        <select name="categorie">
+                <?php
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_client");
+                if (mysqli_num_rows($sql) == 0) {
+                    echo "Aucun client enregistré";
+                } else {
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+                        <option value="<?= $row['id_client'] ?>"><?= $row['nom'] ?></option>
+                <?php
+                    }
+                }
+                ?>
+            </select>
+            <select name="categorie">
+                <?php
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_categorie");
+                if (mysqli_num_rows($sql) == 0) {
+                    echo "Aucun client enregistré";
+                } else {
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+                        <option value="<?= $row['id_categorie'] ?>"><?= $row['categorie'] ?></option>
+                <?php
+                    }
+                }
+                ?>
+            </select>
+            <input type="submit" name="submit" value="Valider"> </input>
+        </form>
+
     </main>
+
+
 </body>
 
 </html>

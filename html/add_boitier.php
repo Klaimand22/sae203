@@ -53,6 +53,19 @@
                     <label for="date_mise_en_service">Date de mise en service</label>
                     <input type="date" name="date_mise_en_service" required>
                 </div>
+                <div class="form-group">
+                    <label for="categorie">Catégorie</label>
+                    <select name="id_categorie" required>
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_categorie");
+                        while ($row = mysqli_fetch_assoc($sql)) {
+                        ?>
+                            <option value="<?= $row['id_categorie'] ?>"><?= $row['categorie'] ?></option>
+                        <?php
+                        }
+                        ?>
+                </div>
 
                 <button type="submit">Ajouter</button>
             </form>
@@ -71,7 +84,8 @@
     $reference = $_POST['reference'];
     $disponible = $_POST['disponible'];
     $date_mise_en_service = $_POST['date_mise_en_service'];
-    $requete = "INSERT INTO sae203_boitier (marque, modele, description, reference, disponible, date_mise_en_service) VALUES ('$marque', '$modele', '$description', '$reference', '$disponible', '$date_mise_en_service')";
+    $categorie = $_POST['id_categorie'];
+    $requete = "INSERT INTO sae203_boitier (marque, modele, description, reference, disponible, date_mise_en_service, id_categorie) VALUES ('$marque', '$modele', '$description', '$reference', '$disponible', '$date_mise_en_service', '$categorie')";
 
     if (mysqli_query($CONNEXION, $requete)) {
         echo "Ajouté avec succès";
