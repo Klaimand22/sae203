@@ -1,7 +1,7 @@
 
 @font-face {
-    font-family: 'Josefin';
-    src: url('../font/JosefinSans-Regular.ttf');
+    font-family: 'Helvetica';
+    src: url('../font/Helvetica.ttf');
 }
 
 
@@ -13,7 +13,7 @@
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Josefin';
+	font-family: 'Helvetica', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

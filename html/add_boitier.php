@@ -65,6 +65,8 @@
                         <?php
                         }
                         ?>
+                    </select>
+
                 </div>
 
                 <button type="submit">Ajouter</button>

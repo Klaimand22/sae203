@@ -24,7 +24,7 @@
 
 
         <form method="POST">
-        <select name="categorie">
+            <select name="client">
                 <?php
                 $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_client");
                 if (mysqli_num_rows($sql) == 0) {
@@ -42,18 +42,45 @@
                 <?php
                 $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_categorie");
                 if (mysqli_num_rows($sql) == 0) {
-                    echo "Aucun client enregistré";
+                    echo "Aucune categorie enregistrée";
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
                         <option value="<?= $row['id_categorie'] ?>"><?= $row['categorie'] ?></option>
+                        <?php $output = $row['categorie']; ?>
+
                 <?php
                     }
                 }
                 ?>
             </select>
-            <input type="submit" name="submit" value="Valider"> </input>
+
+            <select name="object">
+                <?php
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$output");
+                if (mysqli_num_rows($sql) == 0) {
+                    echo "Aucun boitier enregistré";
+                } else {
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+
+
+                        <option value="<?= $row['id_boitier'] ?>"><?= $row['marque'] ?> <?= $row['modele'] ?> <?= $row['description'] ?></option>
+
+                <?php
+                    }
+                }
+                ?>
+                <!-- date -->
+                <label for="date_emprunt">Date d'emprunt</label>
+                <input type="date" name="date_emprunt" required>
+                <label for="date_retour">Date de retour</label>
+                <input type="date" name="date_retour" required>
+
+
+                <input type="submit" name="submit" value="Valider"> </input>
         </form>
+
 
     </main>
 
