@@ -32,7 +32,7 @@
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
-                        <option value="<?= $row['id_client'] ?>"><?= $row['nom'] ?></option>
+                        <option value="<?= $row['id_client'] ?>"><?= $row['nom'] ?> <?= $row['prenom'] ?></option>
                 <?php
                     }
                 }
@@ -46,8 +46,8 @@
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
-                        <option value="<?= $row['id_categorie'] ?>"><?= $row['categorie'] ?></option>
-                        <?php $output = $row['categorie']; ?>
+                        <option value="<?= $row['id_categorie']; ?>"><?= $row['categorie'] ?></option>
+
 
                 <?php
                     }
@@ -55,30 +55,6 @@
                 ?>
             </select>
 
-            <select name="object">
-                <?php
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$output");
-                if (mysqli_num_rows($sql) == 0) {
-                    echo "Aucun boitier enregistré";
-                } else {
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
-
-
-                        <option value="<?= $row['id_boitier'] ?>"><?= $row['marque'] ?> <?= $row['modele'] ?> <?= $row['description'] ?></option>
-
-                <?php
-                    }
-                }
-                ?>
-                <!-- date -->
-                <label for="date_emprunt">Date d'emprunt</label>
-                <input type="date" name="date_emprunt" required>
-                <label for="date_retour">Date de retour</label>
-                <input type="date" name="date_retour" required>
-
-
-                <input type="submit" name="submit" value="Valider"> </input>
         </form>
 
 

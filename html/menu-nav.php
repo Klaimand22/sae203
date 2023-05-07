@@ -24,6 +24,7 @@
             <li><a href="accessoire.php">Accessoire</a></li>
             <li><a href="carte_sd.php">Carte SD</a></li>
             <li><a href="client.php">Client</a></li>
+            <li><a href="add-product-categorie.php">Ajouter un produit</a></li>
             <li><a href="emprunt.php">Emprunt</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>

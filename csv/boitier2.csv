@@ -1,6 +1,6 @@
-﻿id;marque;modele;description;reference;disponible;date_mise_en_service;created_at;updated_at;sae203_categories_id_sae203_categories
-1;Canon;EOS R5;Boîtier plein format sans miroir de 45 mégapixels;REF123;VRAI;01/08/2020;01/05/2023 12:00;01/05/2023 12:00;1
-2;Nikon;Z 7II;Boîtier plein format sans miroir de 45 mégapixels;REF456;VRAI;15/02/2021;01/05/2023 13:00;01/05/2023 13:00;1
-3;Sony;Alpha 7 III;Boîtier plein format sans miroir de 24 mégapixels;REF789;VRAI;10/04/2018;01/05/2023 14:00;01/05/2023 14:00;1
-4;Fujifilm;X-T4;Boîtier hybride APS-C de 26 mégapixels;REF456;VRAI;05/03/2020;01/05/2023 15:00;01/05/2023 15:00;1
-5;Panasonic;Lumix GH5;Boîtier hybride Micro 4/3 de 20 mégapixels;REF789;VRAI;10/03/2017;01/05/2023 16:00;01/05/2023 16:00;1
+﻿1;Canon;EOS R5;Boîtier plein format sans miroir de 45 mégapixels;REF123;1;01/08/2020;1;
+2;Nikon;Z 7II;Boîtier plein format sans miroir de 45 mégapixels;REF456;1;15/02/2021;1;
+3;Sony;Alpha 7 III;Boîtier plein format sans miroir de 24 mégapixels;REF789;1;10/04/2018;1;
+4;Fujifilm;X-T4;Boîtier hybride APS-C de 26 mégapixels;REF456;1;05/03/2020;1;
+5;Panasonic;Lumix GH5;Boîtier hybride Micro 4/3 de 20 mégapixels;REF789;1;10/03/2017;1;
+;;;;;;;;
