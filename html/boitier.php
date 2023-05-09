@@ -43,6 +43,7 @@
                         mysqli_query($CONNEXION, "DELETE FROM sae203_boitier WHERE id_boitier=$id");
                     }
 
+
                     $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_boitier");
                     if (mysqli_num_rows($sql) == 0) {
                         echo "Aucun boitier enregistré";
