@@ -11,7 +11,6 @@
 <body>
     <?php
 
-use function PHPSTORM_META\sql_injection_subst;
 
     require_once('connexion.php');
     $id_categorie = $_GET['id'];
@@ -19,7 +18,7 @@ use function PHPSTORM_META\sql_injection_subst;
     $table_name = "sae203_$nom_categorie";
     $sql_columns = "SHOW COLUMNS FROM $table_name";
     $result_columns = mysqli_query($CONNEXION, $sql_columns);
-    $random = rand(0, 1000);
+
 
 
     echo "id_categorie = $id_categorie<br>";
@@ -33,8 +32,7 @@ use function PHPSTORM_META\sql_injection_subst;
     <form method="POST" action="">
         <?php
         if (mysqli_num_rows($result_columns) > 0) {
-            echo "<label for=\"id_$nom_categorie\">id_$nom_categorie :</label>";
-            echo "<input type=\"text\" name=\"id_$nom_categorie\" value=\"$random\"> <br>";
+            echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> <br>";
             while ($column = mysqli_fetch_assoc($result_columns)) {
                 $column_name = $column['Field'];
 
@@ -47,7 +45,6 @@ use function PHPSTORM_META\sql_injection_subst;
             }
 
 
-            echo "<label for=\"sae203_categorie_id_categorie\">Categorie</label>";
             echo "<input type=\"hidden\" name=\"sae203_categorie_id_categorie\" value=\"$id_categorie\"> <br>";
             echo "<button type=\"submit\" name=\"submit\">Ajouter</button>";
         } else {
@@ -87,6 +84,8 @@ use function PHPSTORM_META\sql_injection_subst;
 
         ?>
 
+      <!-- back button -->
+        <a href="index.php">Retour</a>
 
 
 

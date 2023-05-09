@@ -33,10 +33,16 @@
                 <tbody>
                     <?php
                     include_once "connexion.php";
+                    $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
                     /* Suppression ligne */
                     if (isset($_POST['delete_id'])) {
                         $id = $_POST['delete_id'];
                         mysqli_query($CONNEXION, "DELETE FROM sae203_objectif WHERE id_objectif=$id");
+                    }
+                    /* Modification ligne */
+                    if (isset($_POST['edit_id'])) {
+                        $id = $_POST['edit_id'];
+                        header("Location: modifier.php?id=$id&categorie=$categorie");
                     }
 
 
@@ -56,7 +62,11 @@
                                 <td><?= $row['date_mise_en_service'] ?></td>
                                 <td>
                                     <div>
-                                        <a href="#">Modifier</a>
+                                         <!-- bouton modifier -->
+                                         <form method="POST">
+                                         <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
+                                            <button type="submit">Modifier</button>
+                                        </form>
                                         <form method="POST">
                                             <input type="hidden" name="delete_id" value="<?= $row['id_objectif'] ?>">
                                             <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
@@ -70,7 +80,6 @@
                     ?>
                 </tbody>
             </table>
-            <a href="add_objectif.php" class="btn-add">Ajouter un <?php echo str_replace('.php', '', basename($_SERVER['SCRIPT_NAME'])); ?></a>
         </div>
     </main>
 </body>

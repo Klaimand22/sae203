@@ -32,9 +32,8 @@
                 <input type="text" name="age" id="age">
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email">
-                <label for="sae203_categories_id_sae203_categories">Catégorie</label>
-                <input type="text" name="sae203_categories_id_sae203_categories" id="sae203_categories_id_sae203_categories">
                 <input type="submit" value="Ajouter">
+                <a href="client.php">Retour</a>
             </form>
 
 
@@ -53,24 +52,23 @@
 
 
   require_once('connexion.php');
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $adresse = $_POST['adresse'];
-    $telephone = $_POST['telephone'];
-    $age = $_POST['age'];
-    $email = $_POST['email'];
-    $sae203_categories_id_sae203_categories = $_POST['sae203_categories_id_sae203_categories'];
-    $requete = "INSERT INTO sae203_client (nom, prenom, adresse, telephone, age, email, sae203_categories_id_sae203_categories) VALUES ('$nom', '$prenom', '$adresse', '$telephone', '$age', '$email', '$sae203_categories_id_sae203_categories')";
-    $resultat = mysqli_query($CONNEXION, $requete);
-    if ($resultat) {
-        echo "<p>Le client a bien été ajouté</p>";
-    } else {
-        echo "<p>Erreur lors de l'ajout du client</p>";
-    }
-}
-    mysqli_close($CONNEXION);
+  if (isset ($_POST['nom'])) {
+      $sql_insert = "INSERT INTO sae203_client (nom, prenom, adresse, telephone, age, email) VALUES (";
+      foreach ($_POST as $key => $value) {
+          if ($key != "submit") {
+              $sql_insert .= "'$value', ";
+          }
+      }
+      $sql_insert = substr($sql_insert, 0, -2);
+      $sql_insert .= ")";
+      $result_insert = mysqli_query($CONNEXION, $sql_insert);
+      if ($result_insert) {
+          echo "<h1>Client ajouté</h1>";
+      } else {
+          echo "<h1>Erreur</h1>";
+      }
+  }
+
 
 ?>
-
 </html>

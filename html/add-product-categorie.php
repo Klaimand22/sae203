@@ -26,7 +26,10 @@
         }
         mysqli_close($CONNEXION);
         ?>
+
     </ul>
+
+    <a href="index.php">Retour</a>
 </body>
 
 </html>
