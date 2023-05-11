@@ -10,89 +10,91 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/list_form.css">
+    <link rel="stylesheet" href="../css/global.css">
+
 
 
 </head>
 
 <body>
-    <header><?php include('menu-nav.php'); ?></header>
-    <main>
+    <?php include('menu.php'); ?>
 
-        <div class="tableau-client">
-            <h1>Liste des accessoires</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Marque</th>
-                        <th>Modèle</th>
-                        <th>Description</th>
-                        <th>Référence</th>
-                        <th>Disponible</th>
-                        <th>Date de mise en service</th>
-                        <th>Actions Rapides</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    include_once "connexion.php";
-                    $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
 
-                    /* Suppression ligne */
-                    if (isset($_POST['delete_id'])) {
-                        $id = $_POST['delete_id'];
-                        mysqli_query($CONNEXION, "DELETE FROM sae203_accessoire WHERE id_accessoire=$id");
+    <div class="tableau-client">
+        <h1>Liste des accessoires</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Description</th>
+                    <th>Référence</th>
+                    <th>Disponible</th>
+                    <th>Date de mise en service</th>
+                    <th>Actions Rapides</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include_once "connexion.php";
+                $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
+
+                /* Suppression ligne */
+                if (isset($_POST['delete_id'])) {
+                    $id = $_POST['delete_id'];
+                    mysqli_query($CONNEXION, "DELETE FROM sae203_accessoire WHERE id_accessoire=$id");
+                }
+                /* Modification ligne */
+                if (isset($_POST['edit_id'])) {
+                    $id = $_POST['edit_id'];
+                    header("Location: modifier.php?id=$id&categorie=$categorie");
+                }
+
+
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_accessoire");
+                if (mysqli_num_rows($sql) == 0) {
+                    echo "Aucun accessoire enregistré";
+                } else {
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+                        <tr>
+
+                            <td><?= $row['id_accessoire'] ?></td>
+                            <td><?= $row['marque'] ?></td>
+                            <td><?= $row['modele'] ?></td>
+                            <td><?= $row['description'] ?></td>
+                            <td><?= $row['reference'] ?></td>
+                            <td><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
+                            <td><?= $row['date_mise_en_service'] ?></td>
+                            <td>
+                                <div>
+                                    <!-- bouton modifier -->
+                                    <form method="POST">
+                                        <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
+                                        <button type="submit">Modifier</button>
+                                    </form>
+                                    <form method="POST">
+                                        <input type="hidden" name="delete_id" value="<?= $row['id_accessoire'] ?>">
+                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                <?php
                     }
-                      /* Modification ligne */
-                      if (isset($_POST['edit_id'])) {
-                        $id = $_POST['edit_id'];
-                        header("Location: modifier.php?id=$id&categorie=$categorie");
-                    }
+                }
+                ?>
+            </tbody>
 
-
-                    $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_accessoire");
-                    if (mysqli_num_rows($sql) == 0) {
-                        echo "Aucun accessoire enregistré";
-                    } else {
-                        while ($row = mysqli_fetch_assoc($sql)) {
-                    ?>
-                            <tr>
-
-                                <td><?= $row['id_accessoire'] ?></td>
-                                <td><?= $row['marque'] ?></td>
-                                <td><?= $row['modele'] ?></td>
-                                <td><?= $row['description'] ?></td>
-                                <td><?= $row['reference'] ?></td>
-                                <td><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
-                                <td><?= $row['date_mise_en_service'] ?></td>
-                                <td>
-                                    <div>
-                                         <!-- bouton modifier -->
-                                         <form method="POST">
-                                            <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
-                                            <button type="submit">Modifier</button>
-                                        </form>
-                                        <form method="POST">
-                                            <input type="hidden" name="delete_id" value="<?= $row['id_accessoire'] ?>">
-                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                    <?php
-                        }
-                    }
-                    ?>
-                </tbody>
-
-            </table>
+        </table>
 
 
 
 
-        </div>
+    </div>
 
-    </main>
+
 
 
 

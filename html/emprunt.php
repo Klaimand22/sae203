@@ -11,54 +11,54 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/add_form.css">
 </head>
+<?php include('menu.php'); ?>
 
 <body>
-    <header>
-        <?php include('menu-nav.php'); ?>
-    </header>
-    <main>
-        <?php
-        include_once "connexion.php";
-
-        ?>
 
 
-        <form method="POST">
-            <select name="client">
-                <?php
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_client");
-                if (mysqli_num_rows($sql) == 0) {
-                    echo "Aucun client enregistré";
-                } else {
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
-                        <option value="<?= $row['id_client'] ?>"><?= $row['nom'] ?> <?= $row['prenom'] ?></option>
-                <?php
-                    }
+
+    <?php
+    include_once "connexion.php";
+
+    ?>
+
+
+    <form method="POST">
+        <select name="client">
+            <?php
+            $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_client");
+            if (mysqli_num_rows($sql) == 0) {
+                echo "Aucun client enregistré";
+            } else {
+                while ($row = mysqli_fetch_assoc($sql)) {
+            ?>
+                    <option value="<?= $row['id_client'] ?>"><?= $row['nom'] ?> <?= $row['prenom'] ?></option>
+            <?php
                 }
-                ?>
-            </select>
-            <select name="categorie">
-                <?php
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_categorie");
-                if (mysqli_num_rows($sql) == 0) {
-                    echo "Aucune categorie enregistrée";
-                } else {
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
-                        <option value="<?= $row['id_categorie']; ?>"><?= $row['categorie'] ?></option>
+            }
+            ?>
+        </select>
+        <select name="categorie">
+            <?php
+            $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_categorie");
+            if (mysqli_num_rows($sql) == 0) {
+                echo "Aucune categorie enregistrée";
+            } else {
+                while ($row = mysqli_fetch_assoc($sql)) {
+            ?>
+                    <option value="<?= $row['id_categorie']; ?>"><?= $row['categorie'] ?></option>
 
 
-                <?php
-                    }
+            <?php
                 }
-                ?>
-            </select>
+            }
+            ?>
+        </select>
 
-        </form>
+    </form>
 
 
-    </main>
+
 
 
 </body>

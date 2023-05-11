@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #F2F2F2;
+    position: fixed;
+    top: 0;
+    left: 12%;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display : flex;
+    flex-direction: row;
+    justify-content : space-between;
+    align-items : center;
+
+
+
+}
+header div {
+    margin-left: 10%;
+    display : flex;
+    flex-direction: row;
+    justify-content : left;  
+    align-items : center;
+    width : 100%;
+    height : 100%;
+
+}
+
+header div a {
+    text-decoration: none;
+    color: #1E1E24;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    cursor : pointer;
+}
+header div i {
+    color: #000000;
+    font-size: 1.5rem;
+    cursor : pointer;
+    margin-left : 10px;
+    margin-right : 10px;
+}
+
+.search input {
+    width: 30%;
+    height: 40px;
+    border-radius: 5px;
+    border: 3px solid #4B805A;
+    padding: 0 10px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1e241e;
+}
+.search i {
+    color: #1E1E24;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left : 10px;
+    
+}
+
+.menu {
+    width: 12%;
+    height: 100%;
+    background-color: #4B805A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+
+
+
+.menu img {
+    width: 80%;
+    margin: 10% 10%;
+    
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    border-bottom: 1px solid hsla(121, 73%, 17%, 0.5);
+    padding: 10% 0;
+
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+
+
+
+}
+
+.menu ul li a:hover {
+    color: #F2F2F2;
+}
+
+
+.menu ul li:hover {
+    background-color: #25974594;
+    transition: 0.5s;
+}
+
+li i {
+    margin: 2% 10%;
+    color : white !important;
+}
+

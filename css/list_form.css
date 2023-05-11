@@ -1,14 +1,4 @@
-main {
-    width: 75%;
-    height: 90%;
-    position: absolute;
-    background-color: #d9d9d9;
-    border-radius: 10px;
-    left: 20%;
-    top: 10%;
-    display: flex;
 
-  }
 
 
 .tableau-client {
