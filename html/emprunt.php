@@ -26,8 +26,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Marque</th>
+                    <th>idMarque</th>
                     <th>Modèle</th>
+                    <th>Nom du client</th>
+                    <th>Prénom du client</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +63,9 @@
 
                             <td><?= $row['id_emprunt'] ?></td>
                             <td><?= $row['marque'] ?></td>
+                            <td><?= $row['modele'] ?></td>
+                            <td><?= $row['nom_client'] ?></td>
+                            <td><?= $row['prenom_client'] ?></td>
 
                             <td>
                                 <div>
