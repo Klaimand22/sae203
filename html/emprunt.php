@@ -28,11 +28,6 @@
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
-                    <th>Description</th>
-                    <th>Référence</th>
-                    <th>Disponible</th>
-                    <th>Date de mise en service</th>
-                    <th>Actions Rapides</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +98,6 @@
 <div class="credits">
                 <p> © Michellod - Jandejsek - Triomphe | 2023</p>
 </div>
-            
+
 </footer>
 </html>
