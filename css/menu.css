@@ -80,7 +80,10 @@ header div i {
 }
 
 
-
+.produit {
+    position: relative;
+    margin-left: 27%;
+}
 
 .menu img {
     width: 80%;

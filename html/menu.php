@@ -28,7 +28,7 @@
         <li><i class="fa-solid fa-sitemap"></i><a href="accessoire.php">Accessoire</a></li>
         <li><i class="fa-solid fa-sd-card"></i><a href="carte_sd.php">Carte SD</a></li>
         <li><i class="fa-solid fa-user"></i><a href="client.php">Client</a></li>
-        <li><i class="fa-solid fa-plus"></i><a href="add-product-categorie.php">Ajouter un </a><a>produit</a></li>
+        <li><i class="fa-solid fa-plus"></i><a href="add-product-categorie.php">Ajouter un </a><a class="produit">produit</a></li>
         <li><i class="fa-solid fa-credit-card"></i><a href="emprunt.php">Emprunt</a></li>
         <li><i class="fa-solid fa-phone"></i><a href="contact.html">Contact</a></li>
     </ul>
