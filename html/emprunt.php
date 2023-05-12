@@ -15,9 +15,10 @@
 
 
 </head>
+<?php include('menu.php'); ?>
 
 <body>
-    <?php include('menu.php'); ?>
+
 
 
     <div class="tableau-client">
@@ -53,39 +54,22 @@
                 }
 
 
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_emprunt");
-                if (mysqli_num_rows($sql) == 0) {
-                    echo "Aucun emprunt enregistré";
-                } else {
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                ?>
-                        <tr>
-
-                            <td><?= $row['id_emprunt'] ?></td>
-                            <td><?= $row['marque'] ?></td>
-                            <td><?= $row['modele'] ?></td>
-                            <td><?= $row['nom_client'] ?></td>
-                            <td><?= $row['prenom_client'] ?></td>
-
-                            <td>
-                                <div>
-                                    <!-- bouton modifier -->
-                                    <form method="POST">
-                                        <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
-                                        <button type="submit">Modifier</button>
-                                    </form>
-
-                                    <form method="POST">
-                                        <input type="hidden" name="delete_id" value="<?= $row['id_boitier'] ?>">
-                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                <?php
-                    }
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_boitier INNER JOIN sae203_client ON sae203_boitier.id_client = sae203_client.id_client");
+                while ($row = mysqli_fetch_assoc($sql)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id_boitier'] . "</td>";
+                    echo "<td>" . $row['marque'] . "</td>";
+                    echo "<td>" . $row['modele'] . "</td>";
+                    echo "<td>" . $row['nom'] . "</td>";
+                    echo "<td>" . $row['prenom'] . "</td>";
+                    echo "</tr>";
                 }
+
+
+
                 ?>
+
+
             </tbody>
 
         </table>
@@ -101,9 +85,10 @@
 </body>
 <footer>
 
-<div class="credits">
-                <p> © Michellod - Jandejsek - Triomphe | 2023</p>
-</div>
+    <div class="credits">
+        <p> © Michellod - Jandejsek - Triomphe | 2023</p>
+    </div>
 
 </footer>
+
 </html>
