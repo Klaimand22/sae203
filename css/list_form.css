@@ -66,14 +66,3 @@ th {
     background-color: #3e8e41;
   }
 
-.credits {
-    position: fixed;
-    bottom: 0;
-    background-color: #e8f0e8;
-    padding: 1%;
-    width:105%;
-}
-
-.credits p{
-  margin-left: 35%;
-}
