@@ -26,7 +26,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Marque</th>
+                    <th>idMarque</th>
                     <th>Modèle</th>
                     <th>Nom du client</th>
                     <th>Prénom du client</th>
