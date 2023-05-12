@@ -81,5 +81,8 @@
         </footer>
 </body>
 
+<div class="credits">
+                <p> © Michellod - Jandejsek - Triomphe | 2023</p>
+</div>
 
 </html>
