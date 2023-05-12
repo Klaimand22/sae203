@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/add_form.css">
+    <link rel="stylesheet" href="../css/global.css">
 
 
 </head>
@@ -17,7 +18,6 @@
 
 <body>
     <div class="tableau-client">
-
             <div class="form">
                 <h2>Ajouter des clients</h2>
                 <form action="add_client.php" method="post">
@@ -36,10 +36,6 @@
                     <input type="submit" value="Ajouter">
                     <a href="client.php">Retour</a>
                 </form>
-
-
-
-
             </div>
 
     </div>
