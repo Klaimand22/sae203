@@ -17,8 +17,6 @@
 
 <body>
 
-
-
     <div class="grid-case">
         <div>
             <h3><!-- count in php -->
@@ -77,9 +75,11 @@
     </body>
     
     <footer>
-        <div class="credits">
-            <p> © Michellod - Jandejsek - Triomphe | 2023</p>
-        </div>
+
+    <div class="credits">
+                <p> © Michellod - Jandejsek - Triomphe | 2023</p>
+    </div>
+
     </footer>
 
 </html>
