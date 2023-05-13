@@ -82,8 +82,8 @@
                                         <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
                                         <button type="submit">Modifier</button>
                                     </form>
-                                    <form method="POST" action="emprunter">
-                                        <input type="hidden" name="emprunter_id" value="<?= $row['id_boitier'] ?>">
+                                    <form method="POST">
+                                        <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
                                         <button type="submit">Emprunter</button>
                                     </form>
                                     <form method="POST">
