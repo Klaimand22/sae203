@@ -23,6 +23,8 @@
     <ul>
         <li><i class="fa-solid fa-house-user"></i><a href="index.php">Accueil</a></li>
 
+
+
         <li><i class="fa-solid fa-camera"></i><a href="boitier.php">Boitier</a></li>
         <li><i class="fa-solid fa-phone"></i><a href="objectif.php">Objectif</a></li>
         <li><i class="fa-solid fa-sitemap"></i><a href="accessoire.php">Accessoire</a></li>

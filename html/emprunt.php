@@ -31,6 +31,7 @@
                     <th>Modèle</th>
                     <th>Nom du client</th>
                     <th>Prénom du client</th>
+                    <th>Actions Rapides</th>
 
                 </tr>
             </thead>
@@ -54,21 +55,44 @@
                 }
 
 
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_boitier INNER JOIN sae203_client ON sae203_boitier.id_client = sae203_client.id_client");
-                while ($row = mysqli_fetch_assoc($sql)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['id_boitier'] . "</td>";
-                    echo "<td>" . $row['marque'] . "</td>";
-                    echo "<td>" . $row['modele'] . "</td>";
-                    echo "<td>" . $row['nom'] . "</td>";
-                    echo "<td>" . $row['prenom'] . "</td>";
-                    echo "</tr>";
+
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_emprunt");
+                if (mysqli_num_rows($sql) == 0) {
+                    echo "Aucun emprunt enregistré";
+                } else {
+
                 }
 
+                $sql = mysqli_query($CONNEXION, "SELECT *
+                FROM sae203_emprunt
+                JOIN sae203_categorie ON sae203_emprunt.sae203_categorie_id_categorie = sae203_categorie.id_categorie
+                JOIN sae203_client ON sae203_emprunt.sae203_client_id_client = sae203_client.id_client
+                JOIN sae203_boitier ON sae203_emprunt.id_emprunt = sae203_boitier.id_boitier");
 
+                while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+                    <tr>
+                        <td><?php echo $row['id_emprunt']; ?></td>
+                        <td><?php echo $row['marque']; ?></td>
+                        <td><?php echo $row['modele']; ?></td>
+                        <td><?php echo $row['nom']; ?></td>
+                        <td><?php echo $row['prenom']; ?></td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" name="edit_id" value="<?php echo $row['id_emprunt']; ?>">
+                                <button type="submit" name="edit_btn" class="btn btn-success">Modifier</button>
+
+                            <form method="post">
+                                <input type="hidden" name="delete_id" value="<?php echo $row['id_emprunt']; ?>">
+                                <button type="submit" name="delete_btn" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                <?php
+                }
 
                 ?>
-
 
             </tbody>
 
@@ -76,8 +100,12 @@
 
 
 
+
+
     </div>
 
+
+    <button class="btn btn-primary" onclick="window.location.href='add-product-categorie.php'">Ajouter un emprunt</button>
 
 
 

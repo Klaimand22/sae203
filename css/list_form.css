@@ -34,9 +34,15 @@ tr {
 
 }
 
-th, td {
-    color: rgb(0, 0, 0);
+th{
+    color: rgb(255, 255, 255);
     padding: 15px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    color: #4d4d4d;
 }
 tr:nth-child(even) {
     background-color: #4B8051;

@@ -48,7 +48,8 @@
 
 require_once('connexion.php');
 if (isset($_POST['nom'])) {
-    $sql_insert = "INSERT INTO sae203_client (nom, prenom, adresse, telephone, age, email) VALUES (";
+
+    $sql_insert = "INSERT INTO sae203_client (id_client, nom, prenom, adresse, telephone, age, email) VALUES (NULL, ";
     foreach ($_POST as $key => $value) {
         if ($key != "submit") {
             $sql_insert .= "'$value', ";
