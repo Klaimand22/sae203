@@ -44,9 +44,7 @@ td {
     text-align: center;
     color: #000000a2;
     font-weight: 700;
-
-
-    
+    vertical-align: middle;   
 }
 tr:nth-child(even) {
     background-color: #4B805A;;
