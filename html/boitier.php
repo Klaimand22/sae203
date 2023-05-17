@@ -25,6 +25,7 @@
         <table>
             <thead>
                 <tr class="menutable">
+                    <th>Image   </th>
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
@@ -67,6 +68,7 @@
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
                         <tr class="table">
+                            <td class="descriptions"><img src="../img/product/<?= $row['sae203_image_id_image']?>.jpg" alt="image"></td>
                             <td class="descriptions"><?= $row['id_boitier'] ?></td>
                             <td class="descriptions"><?= $row['marque'] ?></td>
                             <td class="descriptions"><?= $row['modele'] ?></td>

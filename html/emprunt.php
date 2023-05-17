@@ -13,27 +13,42 @@
     <link rel="stylesheet" href="../css/global.css">
 
     <?php
-                include_once "connexion.php";
-                /* categorie = nom de page */
-                $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
+    include_once "connexion.php";
 
 
-                /* Suppression ligne */
-                if (isset($_POST['delete_id'])) {
-                    $id = $_POST['delete_id'];
-                    mysqli_query($CONNEXION, "DELETE FROM sae203_boitier WHERE id_boitier=$id");
-                }
 
-                /* Modification ligne */
-                if (isset($_POST['edit_id'])) {
-                    $id = $_POST['edit_id'];
-                    header("Location: modifier.php?id=$id&categorie=$categorie");
-                }
+    if (isset($_POST['categorie'])) {
+        $categorie = $_POST['categorie'];
+    } else { // Si on arrive sur la page sans passer par le formulaire
+        $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
+    }
 
-?>
+    /* Suppression ligne */
+    if (isset($_POST['delete_id'])) {
+        if (isset($_POST['categorie'])) {
+            $categorie = $_POST['categorie'];
+        } else { // Si on arrive sur la page sans passer par le formulaire
+            $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
+        }
+        $id = $_POST['delete_id'];
+        echo "<h1> $categorie </h1>";
+        echo "<h1> $id </h1>";
+        mysqli_query($CONNEXION, "DELETE FROM sae203_$categorie WHERE id_$categorie=$id");
+
+    }
+
+    /* Modification ligne */
+    if (isset($_POST['edit_id'])) {
+        $id = $_POST['edit_id'];
+        header("Location: modifier.php?id=$id&categorie=$categorie");
+    }
+
+    ?>
 
 
 </head>
+
+<?php include('menu.php'); ?>
 
 <body>
 
@@ -47,12 +62,15 @@
                 <tr>
                     <th>ID</th>
                     <th>Client</th>
-                    <th>Boitier</th>
+                    <th>Produit</th>
                     <th>Date d'emprunt</th>
                     <th>Date de retour</th>
+                    <th>Catégorie</th>
                     <th>Actions Rapides</th>
+
                 </tr>
             </thead>
+
             <tbody>
                 <?php
                 include_once "connexion.php";
@@ -62,38 +80,47 @@
                     echo "Aucun emprunt enregistré";
                 } else {
 
-                }
 
-                $sql = mysqli_query($CONNEXION, "SELECT c.*
+                    $sql = mysqli_query($CONNEXION, "SELECT em.id_emprunt, c.prenom, c.nom, c.telephone, cat.nom AS categorie, p.marque, p.modele, em.date_debut, em.date_fin
                 FROM sae203_client c
-                INNER JOIN sae203_emprunt e ON c.id_client = e.sae203_client_id_client;
-                ");
-                while ($row = mysqli_fetch_assoc($sql)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['id_client'] . "</td>";
-                    echo "<td>" . $row['nom'] . "</td>";
-                    echo "<td>" . $row['prenom'] . "</td>";
-                    echo "<td>" . $row['date_debut'] . "</td>";
-                    echo "<td>" . $row['date_fin'] . "</td>";
-                    echo "<input type='hidden' name='delete_id' value='" . $row['id_client'] . "'>";
-                    echo "<button type='submit' name='delete_btn' class='btn btn-danger'>Supprimer</button>";
-                    echo "</form>";
-                    echo "</td>";
-                    echo "</tr>";
+                JOIN sae203_emprunt em ON c.id_client = em.sae203_client_id_client
+                JOIN sae203_categorie cat ON em.sae203_categorie_id_categorie = cat.id_categorie
+                LEFT JOIN sae203_boitier p ON em.id_produit = p.id_boitier
+                LEFT JOIN sae203_carte_sd cs ON em.id_produit = cs.id_carte_sd
+                LEFT JOIN sae203_accessoire ac ON em.id_produit = ac.id_accessoire
+                LEFT JOIN sae203_objectif o ON em.id_produit = o.id_objectif;");
+                    while ($row = mysqli_fetch_assoc($sql)) {
+                ?>
+                        <tr>
+                            <td><?= $row['id_emprunt'] ?></td>
+                            <td><?= $row['prenom'] ?> <?= $row['nom'] ?></td>
+                            <td><?= $row['marque'] ?> <?= $row['modele'] ?></td>
+                            <td><?= $row['date_debut'] ?></td>
+                            <td><?= $row['date_fin'] ?></td>
+                            <td><?= $row['categorie'] ?></td>
+                            <td>
+                                <form action="" method="POST">
+                                    <input type="hidden" name="delete_id" value="<?= $row['id_emprunt']?>">
+                                    <input type="hidden" name="categorie" value="<?= $row['categorie'] ?>">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                </form>
+                                <form action="" method="POST">
+                                    <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
+                                    <button type="submit" class="btn btn-primary">Modifier</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                <?php
+                    }
                 }
                 ?>
-
-
-
-
-
+            </tbody>
+        </table>
 
     </div>
 
-
-    <button class="btn btn-primary" onclick="window.location.href='add-product-categorie.php'">Ajouter un emprunt</button>
-
-
+    </tbody>
 
 
 </body>

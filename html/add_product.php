@@ -42,6 +42,9 @@
 
         ?>
 
+        <h2>Formulaire d'ajout</h2>
+        <h3>Remplissez les champs suivants</h3>
+
         <form method="POST" action="">
             <?php
             if (mysqli_num_rows($result_columns) > 0) {
@@ -50,23 +53,48 @@
                     $column_name = $column['Field'];
 
 
-                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie") {
+                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image") {
                         echo "<label for=\"$column_name\">$column_name :</label>";
                         echo "<input type=\"text\" name=\"$column_name\" required><br>";
                     }
                 }
+            ?>
+
+                <input type="hidden" name="sae203_categorie_id_categorie" value="<?php echo $id_categorie ?>"> <br>
+
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg">
+                <button type="submit" name="submit">Ajouter</button>
+            <?php
 
 
-                echo "<input type=\"hidden\" name=\"sae203_categorie_id_categorie\" value=\"$id_categorie\"> <br>";
-                echo "<button type=\"submit\" name=\"submit\">Ajouter</button>";
+
+
+
+
             } else {
                 echo "<h1>La table ne contient pas de colonnes</h1>";
             }
 
-            /*  */
+
+            if (isset($_FILES['image'])) {
+                $file_name = $_FILES['image']['name'];
+                $file_tmp = $_FILES['image']['tmp_name'];
+                $file_destination = "../img/product/" . $file_name;
+
+                if (move_uploaded_file($file_tmp, $file_destination)) {
+                    // L'image a été téléchargée avec succès, vous pouvez maintenant utiliser $file_name ou $file_destination selon vos besoins
+                } else {
+                    // Une erreur s'est produite lors du téléchargement de l'image
+                }
+            }
+
+            if (isset($_POST['submit'])) {
 
 
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                $sql_insert_image = "INSERT INTO sae203_image VALUES (NULL, '$file_name', '$file_tmp')";
+
+
 
                 $sql_insert = "INSERT INTO $table_name VALUES (";
                 foreach ($_POST as $key => $value) {
@@ -86,6 +114,7 @@
                     echo "<h1>Erreur lors de l'ajout du produit</h1>";
                 }
             }
+
 
 
 

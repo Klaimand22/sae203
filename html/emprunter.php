@@ -87,6 +87,14 @@
         $result = mysqli_query($CONNEXION, $sql);
         if ($result) {
             echo "L'emprunt a été ajouté";
+            $sql = "UPDATE sae203_$nom_categorie SET disponible=0 WHERE id_$nom_categorie=$id_produit";
+            $result = mysqli_query($CONNEXION, $sql);
+            if ($result) {
+                echo "Le produit a été marqué comme indisponible";
+            } else {
+                echo "Erreur : " . mysqli_error($CONNEXION);
+            }
+
         } else {
             echo "Erreur : " . mysqli_error($CONNEXION);
         }
