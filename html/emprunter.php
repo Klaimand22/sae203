@@ -40,6 +40,8 @@
 
 
     <form action="" method="POST">
+    <input type="hidden" name="id" value="">
+    <input type="hidden" name="categorie" value="<?php echo $nom_categorie ?>">
     <label for="client">Client</label>
     <select name="client" id="client">
         <?php
@@ -51,30 +53,28 @@
         }
         ?>
     </select>
+
     <br>
     <label for="date_debut">Date de début</label>
     <input type="date" name="date_debut" id="date_debut" required>
     <br>
     <label for="date_fin">Date de fin</label>
     <input type="date" name="date_fin" id="date_fin" required>
-    <br>
-    <input type="hidden" name="id" value="<?php echo $id ?>">
-    <input type="hidden" name="categorie" value="<?php echo $nom_categorie ?>">
     <button type="submit" name="submit">Emprunter</button>
-</form>
 
 
-
-<?php
+    <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'];
     $categorie = $_POST['categorie'];
     $client = $_POST['client'];
     $date_debut = $_POST['date_debut'];
     $date_fin = $_POST['date_fin'];
-    $sql = "INSERT INTO sae203_emprunt (id_emprunt, sae203_categorie_id_categorie, sae203_client_id_client, date_debut, date_fin) VALUES ('', '$categorie', '$client' '$date_debut', '$date_fin')";
-    echo $sql;
-    $result = mysqli_query($CONNEXION, $sql);
+
+    echo $id;
+
+    $sql = "INSERT INTO sae203_emprunt (id_emprunt, sae203_client_id_client, sae203_categorie_id_$categorie, date_debut, date_fin) VALUES ('','$client', '$id', '$date_debut', '$date_fin')";
+
     if ($result) {
         echo "Emprunt ajouté";
     } else {
@@ -83,6 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
     echo $sql;
 ?>
+</form>
+
+
+
+
 
 
     <a href="<?php echo $nom_categorie ?>.php">Retour</a>
