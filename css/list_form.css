@@ -44,7 +44,7 @@ td {
     text-align: center;
     color: #000000a2;
     font-weight: 700;
-    vertical-align: middle;   
+    vertical-align: middle;
 }
 tr:nth-child(even) {
     background-color: #4B805A;;
@@ -77,10 +77,10 @@ th {
 .modifier button {
     background-color: #f8faf8;
     border-radius: 10px;
-    padding: 7px; 
+    padding: 7px;
     border: solid 2px rgb(79, 77, 77);
     margin-bottom: 6px;
-    font-weight: 500;   
+    font-weight: 500;
     display: flex;
     justify-content: center;
     box-shadow: 5px 3px 1px rgb(79, 77, 77);
@@ -88,7 +88,7 @@ th {
 }
 
 .change{
-   width : 63%; 
+   width : 63%;
 }
 
 .borrow{

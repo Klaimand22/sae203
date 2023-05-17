@@ -17,6 +17,8 @@
         $id_produit = $_GET['id'];
         echo $id_produit;
         $nom_categorie = $_GET['categorie'];
+        $id_sae203_categorie = 1;
+        echo $id_sae203_categorie;
         echo $nom_categorie;
         $sql = "SELECT * FROM sae203_$nom_categorie WHERE id_$nom_categorie=$id_produit";
         $result = mysqli_query($CONNEXION, $sql);
@@ -41,7 +43,8 @@
 
     <form action="" method="POST">
     <input type="hidden" name="id" value="">
-    <input type="hidden" name="categorie" value="<?php echo $nom_categorie ?>">
+    <input type="hidden" name="produit" value="<?php echo $id_produit ?>">
+    <input type="hidden" name="categorie" value="<?php echo $id_sae203_categorie ?>">
     <label for="client">Client</label>
     <select name="client" id="client">
         <?php
@@ -63,26 +66,33 @@
     <button type="submit" name="submit">Emprunter</button>
 
 
+
+
     <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_POST['id'];
-    $categorie = $_POST['categorie'];
-    $client = $_POST['client'];
-    $date_debut = $_POST['date_debut'];
-    $date_fin = $_POST['date_fin'];
 
-    echo $id;
-
-    $sql = "INSERT INTO sae203_emprunt (id_emprunt, sae203_client_id_client, sae203_categorie_id_$categorie, date_debut, date_fin) VALUES ('','$client', '$id', '$date_debut', '$date_fin')";
-
-    if ($result) {
-        echo "Emprunt ajouté";
-    } else {
-        echo "Erreur : " . mysqli_error($CONNEXION);
+    if (isset($_POST['submit'])) {
+        $id_emprunt = $_POST['id'];
+        $id_produit = $_POST['produit'];
+        $sae203_categorie_id_categorie = $_POST['categorie'];
+        $sae203_client_id_client = $_POST['client'];
+        $date_debut = $_POST['date_debut'];
+        $date_fin = $_POST['date_fin'];
+        ?>
+        <p>Emprunt du <?php echo $nom_categorie ?> <?php echo $id_produit ?></p>
+        <p>Client : <?php echo $sae203_client_id_client ?></p>
+        <p>Date de début : <?php echo $date_debut ?></p>
+        <p>Date de fin : <?php echo $date_fin ?></p>
+        <?php
+        $sql = "INSERT INTO sae203_emprunt (id_emprunt, id_produit, sae203_categorie_id_categorie, sae203_client_id_client, date_debut, date_fin) VALUES (NULL, '$id_produit', '$sae203_categorie_id_categorie', '$sae203_client_id_client', '$date_debut', '$date_fin')";
+        $result = mysqli_query($CONNEXION, $sql);
+        if ($result) {
+            echo "L'emprunt a été ajouté";
+        } else {
+            echo "Erreur : " . mysqli_error($CONNEXION);
+        }
     }
-}
-    echo $sql;
-?>
+    ?>
+
 </form>
 
 

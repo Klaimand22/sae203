@@ -90,7 +90,7 @@
                                         <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
                                     </form>
                                 </div>
-                            </td>   
+                            </td>
                         </tr>
                 <?php
                     }
