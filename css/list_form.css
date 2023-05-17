@@ -40,17 +40,19 @@ th{
 }
 
 td {
-    padding: 15px;
+    padding: 30px;
     text-align: center;
-    color: #4d4d4d;
+    color: #000000a2;
+    font-weight: 700;
+    vertical-align: middle;   
 }
 tr:nth-child(even) {
-    background-color: #4B8051;
+    background-color: #4B805A;;
 
 }
 
 th {
-    background-color: #4B8051;
+    background-color:#4B805A;;
 }
 
 .btn-add {
@@ -72,3 +74,32 @@ th {
     background-color: #3e8e41;
   }
 
+.modifier button {
+    background-color: #f8faf8;
+    border-radius: 10px;
+    padding: 7px; 
+    border: solid 2px rgb(79, 77, 77);
+    margin-bottom: 6px;
+    font-weight: 500;   
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 3px 1px rgb(79, 77, 77);
+    cursor: pointer;
+}
+
+.change{
+   width : 63%; 
+}
+
+.borrow{
+
+}
+
+.delete {
+    color: rgb(217, 39, 39);
+}
+
+tr .descriptions{
+
+
+}
