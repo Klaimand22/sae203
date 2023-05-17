@@ -21,7 +21,7 @@
         <h1>Liste des cartes SD</h1>
         <table>
             <thead>
-                <tr>
+                <tr class="menutable">
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>

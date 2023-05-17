@@ -11,8 +11,13 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    margin-left: 3%;
 
 
+}
+
+.table{
+    
 }
 
 h1 {
@@ -31,12 +36,16 @@ table {
 }
 tr {
     text-align: center;
-
+    border-radius: 4px;
 }
 
 th{
     color: rgb(255, 255, 255);
     padding: 15px;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    color: #efedea;
 }
 
 td {
@@ -48,34 +57,19 @@ td {
     vertical-align: middle;   
 }
 tr:nth-child(even) {
-    background-color: #4B805A;;
+    background-color: #4B805A;
 
 }
 
 .menutable {
-    background-color:#4B805A;
+    background-color:#3e5c46;
     border-radius: 10px;
+    border: 1px solid transparent;
     box-shadow: 10px 8px 10px rgb(79, 77, 77);
+    
+
 }
 
-.btn-add {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-
-  .btn-add:hover {
-    background-color: #3e8e41;
-  }
 .modifier{
     display: flex;
     flex-direction: row;
@@ -96,7 +90,7 @@ tr:nth-child(even) {
     justify-content: center;
     box-shadow: 5px 3px 1px rgb(79, 77, 77);
     cursor: pointer;
-    width : 63%;
+    width : 100%;
     transition: ease-in-out 10ms;
      
 }
@@ -112,7 +106,3 @@ tr:nth-child(even) {
     color: rgb(217, 39, 39);
 }
 
-tr .descriptions{
-
-
-}

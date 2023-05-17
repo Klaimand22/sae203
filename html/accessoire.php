@@ -24,7 +24,7 @@
         <h1>Liste des accessoires</h1>
         <table>
             <thead>
-                <tr>
+                <tr class="menutable">
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
@@ -70,11 +70,11 @@
                             <td>
                                 <div>
                                     <!-- bouton modifier -->
-                                    <form method="POST">
+                                    <form  class="modifier" method="POST">
                                         <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
                                         <button type="submit">Modifier</button>
                                     </form>
-                                    <form method="POST">
+                                    <form  class="modifier" method="POST">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_accessoire'] ?>">
                                         <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
                                     </form>
