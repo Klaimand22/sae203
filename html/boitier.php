@@ -24,7 +24,7 @@
         <h1>Liste des boitiers</h1>
         <table>
             <thead>
-                <tr>
+                <tr class="menutable">
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
@@ -66,7 +66,7 @@
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
-                        <tr>
+                        <tr class="table">
                             <td class="descriptions"><?= $row['id_boitier'] ?></td>
                             <td class="descriptions"><?= $row['marque'] ?></td>
                             <td class="descriptions"><?= $row['modele'] ?></td>
@@ -103,10 +103,6 @@
 
 
     </div>
-
-
-
-
 
 </body>
 <footer>

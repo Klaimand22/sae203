@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/list_form.css">
 
 </head>
 
 <?php include('menu.php'); ?>
 
 <body>
-
+    <div class="title-grid-case">
+        <h1>Stockage</h1>
+    </div>
     <div class="grid-case">
         <div>
             <h3><!-- count in php -->
@@ -70,8 +73,6 @@
                 ?> client</h3>
         </div>
 
-
-        </main>
 
     </div>
     <footer>
