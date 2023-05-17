@@ -14,7 +14,7 @@
 </head>
 <div class="menu">
 
-    <img src="../img/logo.svg" alt="logo">
+    <img src="../img/logoblanc.svg" alt="logo">
 
 
 
