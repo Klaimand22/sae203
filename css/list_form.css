@@ -26,8 +26,8 @@ table {
     border-collapse: collapse;
     width: 100%;
     font-size: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 tr {
     text-align: center;
@@ -44,6 +44,7 @@ td {
     text-align: center;
     color: #000000a2;
     font-weight: 700;
+    font-size: 17px;
     vertical-align: middle;   
 }
 tr:nth-child(even) {
@@ -51,8 +52,10 @@ tr:nth-child(even) {
 
 }
 
-th {
-    background-color:#4B805A;;
+.menutable {
+    background-color:#4B805A;
+    border-radius: 10px;
+    box-shadow: 10px 8px 10px rgb(79, 77, 77);
 }
 
 .btn-add {
@@ -73,6 +76,13 @@ th {
   .btn-add:hover {
     background-color: #3e8e41;
   }
+.modifier{
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle; 
+    justify-content: center;
+}
+
 
 .modifier button {
     background-color: #f8faf8;
@@ -80,18 +90,21 @@ th {
     padding: 7px; 
     border: solid 2px rgb(79, 77, 77);
     margin-bottom: 6px;
-    font-weight: 500;   
+    font-weight: 500; 
+    font-size: 15px;  
     display: flex;
     justify-content: center;
     box-shadow: 5px 3px 1px rgb(79, 77, 77);
     cursor: pointer;
+    width : 63%;
+    transition: ease-in-out 10ms;
+     
 }
 
-.change{
-   width : 63%; 
-}
-
-.borrow{
+.modifier button:hover{
+    background-color: #4d4d4d;
+    color:#f8faf8;
+    box-shadow: 5px 3px 1px #4d4d4d;
 
 }
 
