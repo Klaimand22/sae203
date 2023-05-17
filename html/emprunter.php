@@ -7,35 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un produit</title>
 </head>
+<!-- <?php include('menu.php'); ?> -->
 
 <body>
     <h1>Emprunter un boitier</h1>
 
 <?php
         require_once('connexion.php');
-        $id = $_GET['id'];
-        echo $id;
+        $id_produit = $_GET['id'];
+        echo $id_produit;
         $nom_categorie = $_GET['categorie'];
         echo $nom_categorie;
-        $sql = "SELECT * FROM sae203_$nom_categorie WHERE id_$nom_categorie=$id";
+        $sql = "SELECT * FROM sae203_$nom_categorie WHERE id_$nom_categorie=$id_produit";
         $result = mysqli_query($CONNEXION, $sql);
         $row = mysqli_fetch_assoc($result);
 
 ?>
-    <h2> Emprunt du boitier <?php echo $row['id_boitier'] ?></h2>
+    <h2> Emprunt du <?php echo $nom_categorie ?> <?php echo $id_produit ?></h2>
     <p>Marque : <?php echo $row['marque'] ?></p>
     <p>Modèle : <?php echo $row['modele'] ?></p>
     <p>Description : <?php echo $row['description'] ?></p>
     <p>Référence : <?php echo $row['reference'] ?></p>
-    <p>Disponible : <?php echo $row['disponible'] ?></p>
+    <p>Disponible : <?php if ($row['disponible'] == 1) {
+        echo "Oui";
+    } else {
+        echo "Non";
+    } ?></p>
     <p>Image : <img src="<?php echo $row['image'] ?>" alt="image du boitier" width="200px"></p>
 
 
    <!-- selectionner un client  -->
 
 
-    <form action="emprunter.php" method="POST">
-    <form action="emprunter.php" method="POST">
+    <form action="" method="POST">
+    <input type="hidden" name="id" value="">
+    <input type="hidden" name="categorie" value="<?php echo $nom_categorie ?>">
     <label for="client">Client</label>
     <select name="client" id="client">
         <?php
@@ -47,41 +53,42 @@
         }
         ?>
     </select>
+
     <br>
     <label for="date_debut">Date de début</label>
     <input type="date" name="date_debut" id="date_debut" required>
     <br>
     <label for="date_fin">Date de fin</label>
     <input type="date" name="date_fin" id="date_fin" required>
-    <br>
-    <input type="hidden" name="id" value="<?php echo $id ?>">
-    <input type="hidden" name="categorie" value="<?php echo $nom_categorie ?>">
     <button type="submit" name="submit">Emprunter</button>
-</form>
 
-<?php
-require_once('connexion.php');
-if (isset($_POST['submit'])) {
-    $id_client = $_POST['client'];
-    $id_boitier = $_POST['id'];
-    $nom_categorie = $_POST['categorie'];
+
+    <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $categorie = $_POST['categorie'];
+    $client = $_POST['client'];
     $date_debut = $_POST['date_debut'];
     $date_fin = $_POST['date_fin'];
-    $sql = "INSERT INTO sae203_emprunt (id_emprunt, sae203_categorie_id_categorie, sae203_client_id_client, date_debut, date_fin) VALUES (NULL, $id_boitier, $id_client, '$date_debut', '$date_fin')";
-    $result = mysqli_query($CONNEXION, $sql);
+
+    echo $id;
+
+    $sql = "INSERT INTO sae203_emprunt (id_emprunt, sae203_client_id_client, sae203_categorie_id_$categorie, date_debut, date_fin) VALUES ('','$client', '$id', '$date_debut', '$date_fin')";
+
     if ($result) {
-        $sql_update = "UPDATE sae203_$nom_categorie SET disponible = 0 WHERE id_$nom_categorie = $id_boitier";
-        $result_update = mysqli_query($CONNEXION, $sql_update);
-        if ($result_update) {
-            echo "Le boitier a bien été emprunté";
-        } else {
-            echo "Erreur lors de l'emprunt";
-        }
+        echo "Emprunt ajouté";
+    } else {
+        echo "Erreur : " . mysqli_error($CONNEXION);
     }
 }
-
-
+    echo $sql;
 ?>
+</form>
+
+
+
+
+
 
     <a href="<?php echo $nom_categorie ?>.php">Retour</a>
 
