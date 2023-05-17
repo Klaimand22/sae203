@@ -17,7 +17,9 @@
 <?php include('menu.php'); ?>
 
 <body>
-    <h1>Stockage</h1>
+    <div class="title-grid-case">
+        <h1>Stockage</h1>
+    </div>
     <div class="grid-case">
         <div>
             <h3><!-- count in php -->
