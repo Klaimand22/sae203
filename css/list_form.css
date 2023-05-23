@@ -100,8 +100,12 @@ tr:nth-child(even) td {
     box-shadow: 5px 3px 1px rgb(79, 77, 77);
     cursor: pointer;
     width : 100%;
-    transition: ease-in-out 10ms;
+    transition: ease-in-out 20ms;
 
+}
+
+.modifier button:hover{
+    background-color:  #658b70 ;
 }
 
 .change{
