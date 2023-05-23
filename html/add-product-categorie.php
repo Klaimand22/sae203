@@ -15,7 +15,9 @@
 
 
 </head>
-<?php include('menu.php'); ?>
+<?php include('menu.php');
+?>
+
 
 <body>
     <div class="tableau-client">
