@@ -34,7 +34,6 @@
         echo "<h1> $categorie </h1>";
         echo "<h1> $id </h1>";
         mysqli_query($CONNEXION, "DELETE FROM sae203_$categorie WHERE id_$categorie=$id");
-
     }
 
     /* Modification ligne */
@@ -48,9 +47,9 @@
 
 </head>
 
-<?php include('menu.php'); ?>
 
-<body>
+
+<body><?php include('menu.php'); ?>
 
 
 
@@ -59,7 +58,7 @@
         <h1>Liste des emprunts</h1>
         <table>
             <thead>
-                <tr>
+                <tr class="menutable">
                     <th>ID</th>
                     <th>Client</th>
                     <th>Produit</th>
@@ -99,15 +98,17 @@
                             <td><?= $row['date_fin'] ?></td>
                             <td><?= $row['categorie'] ?></td>
                             <td>
-                                <form action="" method="POST">
-                                    <input type="hidden" name="delete_id" value="<?= $row['id_emprunt']?>">
-                                    <input type="hidden" name="categorie" value="<?= $row['categorie'] ?>">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
-                                </form>
-                                <form action="" method="POST">
-                                    <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
-                                    <button type="submit" class="btn btn-primary">Modifier</button>
-                                </form>
+                                <div>
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="delete_id" value="<?= $row['id_emprunt'] ?>">
+                                        <input type="hidden" name="categorie" value="<?= $row['categorie'] ?>">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                    </form>
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
+                                        <button type="submit" class="btn btn-primary">Modifier</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
 
@@ -119,8 +120,6 @@
         </table>
 
     </div>
-
-    </tbody>
 
 
 </body>

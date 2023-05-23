@@ -24,7 +24,7 @@
         <h1>Liste client</h1>
         <table>
             <thead>
-                <tr>
+            <tr class="menutable">
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Prénom</th>

@@ -24,7 +24,7 @@
         <div>
             <h3><!-- count in php -->
                 <span class="count-php">
-                
+
                     <?php
                     include_once "connexion.php";
                     $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_boitier");
@@ -55,7 +55,7 @@
                     $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_accessoire");
                     $row = mysqli_fetch_assoc($sql);
                     echo $row['COUNT(*)'];
-                    ?> 
+                    ?>
                 </span>
                 Accessoires</h3>
         </div>
@@ -67,8 +67,8 @@
                     $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_carte_sd");
                     $row = mysqli_fetch_assoc($sql);
                     echo $row['COUNT(*)'];
-                    ?> 
-                </span>    
+                    ?>
+                </span>
                 Cartes SD</h3>
         </div>
         <div>
@@ -93,7 +93,7 @@
                     echo $row['COUNT(*)'];
                     ?>
                 </span>
-                client</h3>
+                Clients</h3>
         </div>
 
 

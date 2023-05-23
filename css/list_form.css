@@ -24,9 +24,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.table{
-
-}
 
 h1 {
     text-align: center;
@@ -72,6 +69,10 @@ td {
 tr:nth-child(even) {
     background-color: #4B805A;
 }
+tr:nth-child(even) td {
+    color: #ffffff;
+}
+
 
 .menutable {
     background-color:#3e5c46;
