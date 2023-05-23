@@ -23,54 +23,77 @@
     <div class="grid-case">
         <div>
             <h3><!-- count in php -->
-                <?php
-                include_once "connexion.php";
-                $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_boitier");
-                $row = mysqli_fetch_assoc($sql);
-                echo $row['COUNT(*)'];
-                ?>
+                <span class="count-php">
+                
+                    <?php
+                    include_once "connexion.php";
+                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_boitier");
+                    $row = mysqli_fetch_assoc($sql);
+                    echo $row['COUNT(*)'];
+                    ?>
+                </span>
 
-                Boitier</h3>
+                Boitiers</h3>
         </div>
         <div>
-            <h3><?php
-                include_once "connexion.php";
-                $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_objectif");
-                $row = mysqli_fetch_assoc($sql);
-                echo $row['COUNT(*)'];
-                ?> Objectifs</h3>
+            <h3>
+                <span class="count-php">
+                    <?php
+                    include_once "connexion.php";
+                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_objectif");
+                    $row = mysqli_fetch_assoc($sql);
+                    echo $row['COUNT(*)'];
+                    ?>
+                </span>
+                Objectifs</h3>
         </div>
         <div>
-            <h3><?php
-                include_once "connexion.php";
-                $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_accessoire");
-                $row = mysqli_fetch_assoc($sql);
-                echo $row['COUNT(*)'];
-                ?> Accessoires</h3>
+            <h3>
+                <span class="count-php">
+                    <?php
+                    include_once "connexion.php";
+                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_accessoire");
+                    $row = mysqli_fetch_assoc($sql);
+                    echo $row['COUNT(*)'];
+                    ?> 
+                </span>
+                Accessoires</h3>
         </div>
         <div>
-            <h3><?php
-                include_once "connexion.php";
-                $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_carte_sd");
-                $row = mysqli_fetch_assoc($sql);
-                echo $row['COUNT(*)'];
-                ?> Cartes SD</h3>
+            <h3>
+                <span class="count-php">
+                    <?php
+                    include_once "connexion.php";
+                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_carte_sd");
+                    $row = mysqli_fetch_assoc($sql);
+                    echo $row['COUNT(*)'];
+                    ?> 
+                </span>    
+                Cartes SD</h3>
         </div>
         <div>
-            <h3><?php
-                include_once "connexion.php";
-                $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_emprunt");
-                $row = mysqli_fetch_assoc($sql);
-                echo $row['COUNT(*)'];
-                ?> Emprunt</h3>
+            <h3>
+                <span class="count-php">
+                    <?php
+                    include_once "connexion.php";
+                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_emprunt");
+                    $row = mysqli_fetch_assoc($sql);
+                    echo $row['COUNT(*)'];
+                    ?>
+                </span>
+                Emprunt</h3>
         </div>
         <div>
-            <h3><?php
-                include_once "connexion.php";
-                $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_client");
-                $row = mysqli_fetch_assoc($sql);
-                echo $row['COUNT(*)'];
-                ?> client</h3>
+            <h3>
+                <span class="count-php">
+                    <?php
+                    include_once "connexion.php";
+                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_client");
+                    $row = mysqli_fetch_assoc($sql);
+                    echo $row['COUNT(*)'];
+                    ?>
+                </span>
+                client</h3>
         </div>
 
 
@@ -82,7 +105,6 @@
 
     </footer>
 </body>
-
 
 
 </html>
