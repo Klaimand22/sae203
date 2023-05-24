@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/list_form.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/categorie.css">
 
 
 
@@ -22,14 +23,14 @@
 <body>
     <div class="tableau-client">
         <h1>Sélectionnez une catégorie</h1>
-        <ul>
+        <ul class="catego">
             <?php
             require_once('connexion.php');
             $sql = "SELECT * FROM sae203_categorie";
             $result = mysqli_query($CONNEXION, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a href='add_product.php?id=" . $row['id_categorie'] . "&nom=" . $row['nom'] . "'>" . $row['nom'] . "</a><br>";
+                    echo "<a  href='add_product.php?id=" . $row['id_categorie'] . "&nom=" . $row['nom'] . "'>" . $row['nom'] . "</a><br>";
                 }
             } else {
                 echo "<li>Aucune catégorie trouvée</li>";
@@ -37,9 +38,9 @@
             mysqli_close($CONNEXION);
             ?>
 
-        </ul>
+        </ul >
 
-        <a href="index.php">Retour</a>
+        <a class="back" href="index.php">Retour</a>
     </div>
 
 
