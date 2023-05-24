@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/add_form.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/list_form.css">
 
 
 </head>
@@ -29,7 +30,7 @@
                     <input type="text" name="adresse" id="adresse">
                     <label for="telephone">Téléphone</label>
                     <input type="text" name="telephone" id="telephone">
-                    <label for="age">Age</label>
+                    <label for="age">Âge</label>
                     <input type="text" name="age" id="age">
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email">
