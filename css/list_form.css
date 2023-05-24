@@ -95,9 +95,22 @@ tr:nth-child(even) td {
     vertical-align: middle;
     justify-content: center;
 }
+.modifier .change{
+    background-color: #f8faf8;
+    border-radius: 10px;
+    padding: 7px;
+    border: solid 2px rgb(79, 77, 77);
+    margin-bottom: 6px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 3px 1px rgb(79, 77, 77);
+    cursor: pointer;
+    width : 100%;
+    transition: ease-in-out 20ms;
+}
 
-
-.modifier button {
+.modifier .borrow{
     background-color: #f8faf8;
     border-radius: 10px;
     padding: 7px;
@@ -113,9 +126,37 @@ tr:nth-child(even) td {
 
 }
 
-.modifier button:hover{
-    background-color:  #658b70 ;
+.modifier .delete{
+    background-color: #f8faf8;
+    border-radius: 10px;
+    padding: 7px;
+    border: solid 2px rgb(79, 77, 77);
+    margin-bottom: 6px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 3px 1px rgb(79, 77, 77);
+    cursor: pointer;
+    width : 100%;
+    transition: ease-in-out 20ms;
 }
+
+.modifier .change:hover{
+    background-color:#5a8d68 ;
+    color:#efedea;
+}
+
+.modifier .borrow:hover{
+    background-color:#5a8d68 ;
+    color:#efedea;
+
+}
+
+.modifier .delete:hover{
+    background-color: rgb(171, 95, 95);
+    color: #efedea;
+}
+
 
 .change{
    width : 63%;
