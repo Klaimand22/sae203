@@ -11,17 +11,18 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/list_form.css">
     <link rel="stylesheet" href="../css/global.css">
-
-
-
+    
+    
+    
 </head>
 
 <body>
     <?php include('menu.php'); ?>
-
-
+    
+    
     <div class="tableau-client">
         <h1>Liste client</h1>
+        <a href="add_client.php" class="btn-add">Ajouter un <?php echo str_replace('.php', '', basename($_SERVER['SCRIPT_NAME'])); ?></a>
         <table>
             <thead>
             <tr class="menutable">
@@ -93,7 +94,6 @@
 
         </table>
 
-        <a href="add_client.php" class="btn-add">Ajouter un <?php echo str_replace('.php', '', basename($_SERVER['SCRIPT_NAME'])); ?></a>
 
 
     </div>
