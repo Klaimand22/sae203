@@ -38,6 +38,28 @@
 }
 
 
+.form form {
+    display: block;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    width: 100%;
+    height: 30px; 
+}
+
+.form form input {
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+}
+
+
 h1 {
     text-align: center;
     font-size: 30px;
@@ -165,9 +187,11 @@ tr:nth-child(even) td {
    width : 63%;
 }
 
+/*
 .borrow{
 
 }
+*/
 
 .delete {
     color: rgb(217, 39, 39);
