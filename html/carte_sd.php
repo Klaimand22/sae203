@@ -22,13 +22,13 @@
         <table>
             <thead>
                 <tr class="menutable">
+                    <th>Image</th>
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
                     <th>Capacité (Go)</th>
                     <th>Classe de vitesse</th>
                     <th>Description</th>
-                    <th>Référence</th>
                     <th>Disponible</th>
                     <th>Vitesse écriture</th>
                     <th>Date de mise en service</th>
@@ -59,14 +59,13 @@
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
                         <tr>
-
+                            <td class="descriptions"><img src="../img/product/<?=$row['sae203_image_id_image']?>.jpg" alt="image"></td>
                             <td><?= $row['id_carte_sd'] ?></td>
                             <td><?= $row['marque'] ?></td>
                             <td><?= $row['modele'] ?></td>
                             <td><?= $row['capacite'] ?></td>
                             <td><?= $row['classe'] ?></td>
                             <td><?= $row['description'] ?></td>
-                            <td><?= $row['reference'] ?></td>
                             <td><?= $row['vitesse_ecriture'] ?></td>
                             <td><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
                             <td><?= $row['date_mise_en_service'] ?></td>

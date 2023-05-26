@@ -21,11 +21,11 @@
         <table>
             <thead>
                 <tr class="menutable">
+                    <th>Image</th>
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
                     <th>Description</th>
-                    <th>Référence</th>
                     <th>Disponible</th>
                     <th>Date de mise en service</th>
                     <th>Actions Rapides</th>
@@ -54,11 +54,11 @@
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
                         <tr>
+                            <td class="descriptions"><img src="../img/product/<?=$row['sae203_image_id_image']?>.jpg" alt="image"></td>
                             <td><?= $row['id_objectif'] ?></td>
                             <td><?= $row['marque'] ?></td>
                             <td><?= $row['modele'] ?></td>
                             <td><?= $row['description'] ?></td>
-                            <td><?= $row['reference'] ?></td>
                             <td><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
                             <td><?= $row['date_mise_en_service'] ?></td>
                             <td>

@@ -25,12 +25,11 @@
         <table>
             <thead>
                 <tr class="menutable">
-                    <th>Image   </th>
+                    <th>Image</th>
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
                     <th>Description</th>
-                    <th>Référence</th>
                     <th>Disponible</th>
                     <th>Date de mise en service</th>
                     <th>Actions Rapides</th>
@@ -73,7 +72,6 @@
                             <td class="descriptions"><?= $row['marque'] ?></td>
                             <td class="descriptions"><?= $row['modele'] ?></td>
                             <td class="descriptions"><?= $row['description'] ?></td>
-                            <td class="descriptions"><?= $row['reference'] ?></td>
                             <td class="descriptions"><?= $row['disponible'] == 1 ? "Oui" : "Non" ?></td>
                             <td class="descriptions"><?= $row['date_mise_en_service'] ?></td>
                             <td>
