@@ -47,7 +47,7 @@
                 </span>
                 Objectifs</h3>
         </div>
-        <div>
+        <a href="accessoire.php"><div>
             <h3>
                 <span class="count-php">
                     <?php
@@ -59,6 +59,7 @@
                 </span>
                 Accessoires</h3>
         </div>
+        </a>
         <div>
             <h3>
                 <span class="count-php">
