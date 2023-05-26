@@ -55,8 +55,8 @@
                     <input type="submit" name="submit" value="Ajouter le produit">
                 </form>
 
-            <?php
-            }
+            <?php   }
+
             ?>
 
             <?php

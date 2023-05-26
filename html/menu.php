@@ -25,17 +25,14 @@
 
 
 
-        <li><i class="fa-solid fa-camera"></i><a href="boitier.php">Boitier</a></li>
-        <li><i class="fa-solid fa-phone"></i><a href="objectif.php">Objectif</a></li>
-        <li><i class="fa-solid fa-sitemap"></i><a href="accessoire.php">Accessoire</a></li>
-        <li><i class="fa-solid fa-sd-card"></i><a href="carte_sd.php">Carte SD</a></li>
-        <li><i class="fa-solid fa-user"></i><a href="client.php">Client</a></li>
-        <li><i class="fa-solid fa-plus"></i><a href="add-product-categorie.php">Ajouter un </a><a class="produit">produit</a></li>
-        <li><i class="fa-solid fa-credit-card"></i><a href="emprunt.php">Emprunt</a></li>
-        <li><i class="fa-solid fa-phone"></i><a href="contact.html">Contact</a></li>
-    </ul>
-
-
+        <a href="boitier.php"><li><i class="fa-solid fa-camera"></i>Boitier</li></a>
+        <a href="objectif.php"><li><i class="fa-solid fa-phone"></i>Objectif</li></a>
+        <a href="accessoire.php"><li><i class="fa-solid fa-sitemap"></i>Accessoire</li></a>
+        <a href="carte_sd.php"><li><i class="fa-solid fa-sd-card"></i>Carte SD</li></a>
+        <a href="client.php"><li><i class="fa-solid fa-user"></i>Client</li></a>
+        <a href="add-product-categorie.php"><li><i class="fa-solid fa-plus"></i>Ajouter un <a class="produit">produit</a></li></a>
+        <a href="emprunt.php"><li><i class="fa-solid fa-credit-card"></i>Emprunt</li></a>
+        <a href="contact.html"><li><i class="fa-solid fa-phone"></i>Contact</li></a>
     </ul>
 </div>
 

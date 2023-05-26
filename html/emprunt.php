@@ -31,8 +31,6 @@
             $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
         }
         $id = $_POST['delete_id'];
-        echo "<h1> $categorie </h1>";
-        echo "<h1> $id </h1>";
         mysqli_query($CONNEXION, "DELETE FROM sae203_$categorie WHERE id_$categorie=$id");
     }
 
@@ -80,7 +78,7 @@
                 } else {
 
 
-                    $sql = mysqli_query($CONNEXION, "SELECT em.id_emprunt, c.prenom, c.nom, c.telephone, cat.nom AS categorie, p.marque, p.modele, em.date_debut, em.date_fin
+                $sql = mysqli_query($CONNEXION, "SELECT em.id_emprunt, c.prenom, c.nom, c.telephone, cat.nom AS categorie, p.marque, p.modele, em.date_debut, em.date_fin
                 FROM sae203_client c
                 JOIN sae203_emprunt em ON c.id_client = em.sae203_client_id_client
                 JOIN sae203_categorie cat ON em.sae203_categorie_id_categorie = cat.id_categorie
