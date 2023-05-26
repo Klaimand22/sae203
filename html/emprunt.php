@@ -99,14 +99,15 @@
                             <td><?= $row['categorie'] ?></td>
                             <td>
                                 <div>
-                                    <form action="" method="POST">
+                                  
+                                    <form class="modifier" action="" method="POST">
+                                        <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
+                                        <button class="change" type="submit" class="btn btn-primary">Modifier</button>
+                                    </form>
+                                    <form class="modifier" action="" method="POST">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_emprunt'] ?>">
                                         <input type="hidden" name="categorie" value="<?= $row['categorie'] ?>">
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
-                                    </form>
-                                    <form action="" method="POST">
-                                        <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
-                                        <button type="submit" class="btn btn-primary">Modifier</button>
+                                        <button class="delete" type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
                                     </form>
                                 </div>
                             </td>
