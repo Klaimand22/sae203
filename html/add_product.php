@@ -26,8 +26,6 @@
         $sql_columns = "SHOW COLUMNS FROM $table_name";
         $result_columns = mysqli_query($CONNEXION, $sql_columns);
         $fichier = rand();
-        echo "<h1>rand : $fichier</h1>";
-
         echo "<h1>Ajouter un produit dans la catégorie $nom_categorie</h1>";
         ?>
 
@@ -41,12 +39,14 @@
                 while ($column = mysqli_fetch_assoc($result_columns)) {
                     $column_name = $column['Field'];
 
-                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image") {
+                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "date_mise_en_service") {
                         echo "<label for=\"$column_name\">$column_name :</label>";
                         echo "<input type=\"text\" name=\"$column_name\" required><br>";
                     }
                 }
             ?>
+                <label for="date_mise_en_service">Date de mise en service :</label>
+                <input type="date" name="date_mise_en_service" required><br>
                 <input type="hidden" name="sae203_categorie_id_categorie" value="<?php echo $id_categorie ?>"> <br>
                 <form method="POST" action="image.php" enctype="multipart/form-data">
 
@@ -75,7 +75,6 @@
                     $dossier = '../img/product/';
 
                     if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) {
-                        echo "L'image a bien été ajoutée";
                         $sql_insert_image = "INSERT INTO sae203_image VALUES ('$fichier', '$fichier')";
                         if (mysqli_query($CONNEXION, $sql_insert_image)) {
                             echo "L'image a bien été ajoutée à la base de données";
@@ -95,8 +94,7 @@
 
                 $sql_insert = rtrim($sql_insert, ",");
                 $sql_insert .= ")";
-                echo "<br>table name = $table_name<br>";
-                echo "<br>sql_insert = $sql_insert<br>";
+
 
                 if (mysqli_query($CONNEXION, $sql_insert)) {
                     echo "<h1>Produit ajouté avec succès</h1>";

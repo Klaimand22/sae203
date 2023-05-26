@@ -25,7 +25,7 @@
         <table>
             <thead>
                 <tr class="menutable">
-                    <th>Image   </th>
+                    <th>Image</th>
                     <th>ID</th>
                     <th>Marque</th>
                     <th>Modèle</th>
