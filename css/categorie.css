@@ -1,39 +1,57 @@
 .catego  {
-    width: 40%;
     display: flex;
-    justify-content: center;
+    grid-template-columns:repeat(2, 1fr) ;
+    grid-template-rows:repeat(2, 1fr) ;
+    width: 40%;
     margin-top: 7%;
+    margin-right: 35%;
     gap: 10%;
-    
+
+   
 
 }   
 
 .catego a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 50%;
+    padding: 10%;
     box-shadow: 5px 5px 1px #4f4d4d;
     background-color: #4b805a;
     font-size: 20px;
     border-radius: 10px;
     border: 3px solid #4f4d4d;
     color: #fff;
+    transition: ease-in-out 50ms;
     
-   
 }
 
 
 .catego a:nth-child(1){
-    background-color: #cea244
+    text-decoration: none;
+    background-color: #cea244;
+    width: 100%;
 }
-.catego a:nth-child(2){
+.catego a:nth-child(3){
+    text-decoration: none;
     background-color: #557c94;
+    width: 100%;
 }
-.catego a:nth-child(-1 * 1 + 4){
-    background-color: #8c6b4b;
-}
-.catego a:nth-child(2+2){
+.catego a:nth-child(5){
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #94577c;
+    width: 31%;
+}
+.catego a:nth-child(7){
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8c6b4b;
+    width: 31%;
+    
+
 }
 
 .catego a:hover{
@@ -43,7 +61,24 @@
 
 
 .back {
-    margin-top: 3%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    width: 10%;
+    padding: 1%;
+    box-shadow: 5px 5px 1px #4f4d4d;
+    background-color: #4b805a;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid #4f4d4d;
+    color: #fff;
+    transition: ease-in-out 50ms;
 }
 
-    
+
+.back:hover {
+    background-color: #fff;
+    color: #4b805a;
+}

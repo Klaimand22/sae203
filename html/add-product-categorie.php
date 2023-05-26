@@ -21,9 +21,11 @@
 
 
 <body>
-    <div class="tableau-client">
-        <h1>Sélectionnez une catégorie</h1>
-        <ul class="catego">
+    <div class="tableau-client"> 
+       
+        <h1>Sélectionnez une catégorie</h1> 
+        <a class="back" href="index.php">Retour</a>
+        <div class="catego">
             <?php
             require_once('connexion.php');
             $sql = "SELECT * FROM sae203_categorie";
@@ -38,9 +40,9 @@
             mysqli_close($CONNEXION);
             ?>
 
-        </ul >
+        </div >
 
-        <a class="back" href="index.php">Retour</a>
+       
     </div>
 
 
