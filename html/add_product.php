@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/list_form.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/add_product.css">
 </head>
 
 <body>
@@ -29,29 +30,28 @@
         echo "<h1>Ajouter un produit dans la catégorie $nom_categorie</h1>";
         ?>
 
-        <h2>Formulaire d'ajout</h2>
         <h3>Remplissez les champs suivants</h3>
 
         <form method="POST" action="" enctype="multipart/form-data">
             <?php
             if (mysqli_num_rows($result_columns) > 0) {
-                echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> <br>";
+                echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> ";
                 while ($column = mysqli_fetch_assoc($result_columns)) {
                     $column_name = $column['Field'];
 
-                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "date_mise_en_service") {
+                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "date_mise_en_service" ) {
                         echo "<label for=\"$column_name\">$column_name :</label>";
-                        echo "<input type=\"text\" name=\"$column_name\" required><br>";
+                        echo "<input type=\"text\" name=\"$column_name\" required>";
                     }
                 }
             ?>
                 <label for="date_mise_en_service">Date de mise en service :</label>
-                <input type="date" name="date_mise_en_service" required><br>
-                <input type="hidden" name="sae203_categorie_id_categorie" value="<?php echo $id_categorie ?>"> <br>
+                <input type="date" name="date_mise_en_service" required>
+                <input type="hidden" name="sae203_categorie_id_categorie" value="<?php echo $id_categorie ?>">
                 <form method="POST" action="image.php" enctype="multipart/form-data">
 
                     <input type="file" name="image" accept="image/png, image/jpeg">
-                    <input type = "hidden" name = "id-image" value = "<?php echo $fichier ?>">
+                    <input type="hidden" name="id-image" value="<?php echo $fichier ?>">
                     <input type="submit" name="submit" value="Ajouter le produit">
                 </form>
 
@@ -103,9 +103,6 @@
                 }
                 mysqli_close($CONNEXION);
             ?>
-
-                <!-- Bouton de retour -->
-                <a href="index.php">Retour</a>
         </form>
     </div>
 </body>

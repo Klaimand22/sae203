@@ -24,7 +24,7 @@
     }
 
     /* Suppression ligne */
-    if (isset($_POST['delete_id'])) {
+    if (isset($_POST['delete_id²'])) {
         if (isset($_POST['categorie'])) {
             $categorie = $_POST['categorie'];
         } else { // Si on arrive sur la page sans passer par le formulaire
@@ -97,7 +97,7 @@
                             <td><?= $row['categorie'] ?></td>
                             <td>
                                 <div>
-                                  
+
                                     <form class="modifier" action="" method="POST">
                                         <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
                                         <button class="change" type="submit" class="btn btn-primary">Modifier</button>

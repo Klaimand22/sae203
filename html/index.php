@@ -21,81 +21,97 @@
         <h1>Stockage</h1>
     </div>
     <div class="grid-case">
-        <div>
-            <h3><!-- count in php -->
-                <span class="count-php">
-
-                    <?php
-                    include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_boitier");
-                    $row = mysqli_fetch_assoc($sql);
-                    echo $row['COUNT(*)'];
-                    ?>
-                </span>
-
-                Boitiers</h3>
-        </div>
-        <div>
-            <h3>
-                <span class="count-php">
-                    <?php
-                    include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_objectif");
-                    $row = mysqli_fetch_assoc($sql);
-                    echo $row['COUNT(*)'];
-                    ?>
-                </span>
-                Objectifs</h3>
-        </div>
-        <a href="accessoire.php"><div>
-            <h3>
-                <span class="count-php">
-                    <?php
-                    include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_accessoire");
-                    $row = mysqli_fetch_assoc($sql);
-                    echo $row['COUNT(*)'];
-                    ?>
-                </span>
-                Accessoires</h3>
-        </div>
+        <a href="boitier.php">
+            <div class="yellow">
+                <h3>
+                    <span class="count-php">
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_boitier");
+                        $row = mysqli_fetch_assoc($sql);
+                        echo $row['COUNT(*)'];
+                        ?>
+                    </span>
+                    Boitiers
+                </h3>
+            </div>
         </a>
-        <div>
-            <h3>
-                <span class="count-php">
-                    <?php
-                    include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_carte_sd");
-                    $row = mysqli_fetch_assoc($sql);
-                    echo $row['COUNT(*)'];
-                    ?>
-                </span>
-                Cartes SD</h3>
-        </div>
-        <div>
-            <h3>
-                <span class="count-php">
-                    <?php
-                    include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_emprunt");
-                    $row = mysqli_fetch_assoc($sql);
-                    echo $row['COUNT(*)'];
-                    ?>
-                </span>
-                Emprunt</h3>
-        </div>
-        <div>
-            <h3>
-                <span class="count-php">
-                    <?php
-                    include_once "connexion.php";
-                    $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_client");
-                    $row = mysqli_fetch_assoc($sql);
-                    echo $row['COUNT(*)'];
-                    ?>
-                </span>
-                Clients</h3>
-        </div>
+        <a href="objectif.php">
+            <div class="blue">
+                <h3>
+                    <span class="count-php">
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_objectif");
+                        $row = mysqli_fetch_assoc($sql);
+                        echo $row['COUNT(*)'];
+                        ?>
+                    </span>
+                    Objectifs
+                </h3>
+            </div>
+        </a>
+        <a href="accessoire.php">
+            <div class="brown">
+                <h3>
+                    <span class="count-php">
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_accessoire");
+                        $row = mysqli_fetch_assoc($sql);
+                        echo $row['COUNT(*)'];
+                        ?>
+                    </span>
+                    Accessoires
+                </h3>
+            </div>
+        </a>
+        <a href="carte_sd.php">
+            <div class="pink">
+                <h3>
+                    <span class="count-php">
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_carte_sd");
+                        $row = mysqli_fetch_assoc($sql);
+                        echo $row['COUNT(*)'];
+                        ?>
+                    </span>
+                    Cartes SD
+                </h3>
+            </div>
+        </a>
+        <a href="emprunt.php">
+            <div class="red">
+                <h3>
+                    <span class="count-php">
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_emprunt");
+                        $row = mysqli_fetch_assoc($sql);
+                        echo $row['COUNT(*)'];
+                        ?>
+                    </span>
+                    Emprunt
+                </h3>
+            </div>
+        </a>
+        <a href="client.php">
+            <div class="green">
+                <h3>
+                    <span class="count-php">
+                        <?php
+                        include_once "connexion.php";
+                        $sql = mysqli_query($CONNEXION, "SELECT COUNT(*) FROM sae203_client");
+                        $row = mysqli_fetch_assoc($sql);
+                        echo $row['COUNT(*)'];
+                        ?>
+                    </span>
+                    Clients
+                </h3>
+            </div>
+        </a>
+
 
 
     </div>

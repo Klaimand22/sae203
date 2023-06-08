@@ -31,35 +31,58 @@
 }
 
 
+.grid-case div:hover {
+  background-color: #8c8a8a;
+  color: #fff;
 
-.grid-case div:nth-child(1) {
-  background-color: #cea244; /* Couleur 1 */
 }
 
-.grid-case div:nth-child(2) {
-  background-color: #557c94; /* Couleur 2 */
+.grid-case div:hover h3 {
+  color: #ffffff;
+
 }
 
-.grid-case div:nth-child(3) {
-  background-color: #8c6b4b; /* Couleur 3 */
+.grid-case .yellow{
+  background-color: #cea244;
 }
 
-.grid-case div:nth-child(4) {
-  background-color: #94577c; /* Couleur 4 */
+
+.grid-case .blue{
+  background-color: #557c94;
 }
 
-.grid-case div:nth-child(5) {
-  background-color: #ad4141; /* Couleur 5 */
+.grid-case .brown {
+  background-color: #8c6b4b;
 }
 
-.grid-case div:nth-child(6) {
-  background-color: #7c9455; /* Couleur 6 */
+.grid-case .pink {
+  background-color: #94577c;
 }
+
+.grid-case .red {
+  background-color: #ad4141;
+}
+
+.grid-case .green{
+  background-color: #7c9455;
+}
+
+
+
+.grid-case div a {
+  color: #fff;
+}
+
 
 .count-php {
   margin-bottom: 10px;
   display: block;
   font-size: 50px;
   font-weight: 800;
+
+}
+
+a {
+  text-decoration: none;
 
 }

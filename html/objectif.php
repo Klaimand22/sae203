@@ -46,6 +46,11 @@
                     header("Location: modifier.php?id=$id&categorie=$categorie");
                 }
 
+                if (isset($_POST['emprunter_id'])) {
+                    $id = $_POST['emprunter_id'];
+                    header("Location: emprunter.php?id=$id&categorie=$categorie");
+                }
+
 
                 $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_objectif");
                 if (mysqli_num_rows($sql) == 0) {
@@ -67,6 +72,10 @@
                                     <form class="modifier" method="POST">
                                         <input  type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
                                         <button class="change" type="submit">Modifier</button>
+                                    </form>
+                                    <form class="modifier" method="POST">
+                                        <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
+                                        <button class="borrow" type="submit">Emprunter</button>
                                     </form>
                                     <form class="modifier" method="POST">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_objectif'] ?>">
