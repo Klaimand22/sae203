@@ -21,9 +21,9 @@
 
 
 <body>
-    <div class="tableau-client"> 
-       
-        <h1>Sélectionnez une catégorie</h1> 
+    <div class="tableau-client">
+
+        <h1>Sélectionnez une catégorie</h1>
         <a class="back" href="index.php">Retour</a>
         <div class="catego">
             <?php
@@ -32,7 +32,10 @@
             $result = mysqli_query($CONNEXION, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a  href='add_product.php?id=" . $row['id_categorie'] . "&nom=" . $row['nom'] . "'>" . $row['nom'] . "</a><br>";
+                    if ($row['nom'] == "carte_sd") {
+                        echo "<a  href='add_product.php?id=" . $row['id_categorie'] . "&nom=" . $row['nom'] . "'>Carte SD</a><br>";
+                    } else
+                        echo "<a  href='add_product.php?id=" . $row['id_categorie'] . "&nom=" . $row['nom'] . "'>" . $row['nom'] . "</a><br>";
                 }
             } else {
                 echo "<li>Aucune catégorie trouvée</li>";
@@ -40,9 +43,9 @@
             mysqli_close($CONNEXION);
             ?>
 
-        </div >
+        </div>
 
-       
+
     </div>
 
 
