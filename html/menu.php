@@ -22,9 +22,9 @@
 
 
     <ul>
-        <li><i class="fa-solid fa-house-user"></i><a href="index.php">Accueil</a></li>
-
-
+        <a href="index.php">
+            <li><i class="fa-solid fa-house-user"></i>Accueil</li>
+        </a>
 
         <a href="boitier.php">
             <li><i class="fa-solid fa-camera"></i>Boitier</li>
