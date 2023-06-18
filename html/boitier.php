@@ -11,14 +11,10 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/list_form.css">
     <link rel="stylesheet" href="../css/global.css">
-
-
-
 </head>
 
 <body>
     <?php include('menu.php'); ?>
-
 
     <div class="tableau-client">
         <h1>Liste des boitiers</h1>
@@ -41,7 +37,6 @@
                 /* categorie = nom de page */
                 $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
 
-
                 /* Suppression ligne */
                 if (isset($_POST['delete_id'])) {
                     $id = $_POST['delete_id'];
@@ -52,12 +47,15 @@
                 if (isset($_POST['edit_id'])) {
                     $id = $_POST['edit_id'];
                     header("Location: modifier.php?id=$id&categorie=$categorie");
+                    exit; // Ajout de cette ligne pour arrêter l'exécution du script après la redirection
                 }
 
                 /* Emprunter */
                 if (isset($_POST['emprunter_id'])) {
                     $id = $_POST['emprunter_id'];
+                    $categorie = $_POST['categorie'];
                     header("Location: emprunter.php?id=$id&categorie=$categorie");
+                    exit; // Ajout de cette ligne pour arrêter l'exécution du script après la redirection
                 }
 
                 $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_boitier");
@@ -65,9 +63,11 @@
                     echo "Aucun boitier enregistré";
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
+
+
                 ?>
                         <tr class="table">
-                            <td class="descriptions"><img src="../img/product/<?=$row['sae203_image_id_image']?>.jpg" alt="image"></td>
+                            <td class="descriptions"><img src="../img/product/<?= $row['sae203_image_id_image'] ?>.jpg" alt="image du boitier"></td>
                             <td class="descriptions"><?= $row['id_boitier'] ?></td>
                             <td class="descriptions"><?= $row['marque'] ?></td>
                             <td class="descriptions"><?= $row['modele'] ?></td>
@@ -83,6 +83,7 @@
                                     </form>
                                     <form class="modifier" method="POST">
                                         <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
+                                        <input type="hidden" name="categorie" value="<?= $categorie ?>">
                                         <button class="borrow" type="submit">Emprunter</button>
                                     </form>
                                     <form class="modifier" method="POST">
@@ -97,19 +98,14 @@
                 }
                 ?>
             </tbody>
-
         </table>
-
-
-
     </div>
 
+    <footer>
+        <div class="credits">
+            <p> © Michellod - Jandejsek - Triomphe | 2023</p>
+        </div>
+    </footer>
 </body>
-<footer>
 
-<div class="credits">
-                <p> © Michellod - Jandejsek - Triomphe | 2023</p>
-</div>
-
-</footer>
 </html>

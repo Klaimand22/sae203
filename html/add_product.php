@@ -35,11 +35,10 @@
         <form method="POST" action="" enctype="multipart/form-data">
             <?php
             if (mysqli_num_rows($result_columns) > 0) {
-                echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> ";
                 while ($column = mysqli_fetch_assoc($result_columns)) {
                     $column_name = $column['Field'];
 
-                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "date_mise_en_service" ) {
+                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "date_mise_en_service") {
                         echo "<label for=\"$column_name\">$column_name :</label>";
                         echo "<input type=\"text\" name=\"$column_name\" required>";
                     }
@@ -48,34 +47,23 @@
                 <label for="date_mise_en_service">Date de mise en service :</label>
                 <input type="date" name="date_mise_en_service" required>
                 <input type="hidden" name="sae203_categorie_id_categorie" value="<?php echo $id_categorie ?>">
-                <form method="POST" action="image.php" enctype="multipart/form-data">
-
-                    <input type="file" name="image" accept="image/png, image/jpeg">
-                    <input type="hidden" name="id-image" value="<?php echo $fichier ?>">
-                    <input type="submit" name="submit" value="Ajouter le produit">
-                </form>
-
-            <?php   }
-
-            ?>
+                <input type="file" name="image" accept="image/png, image/jpeg">
+                <input type="hidden" name="id-image" value="<?php echo $fichier ?>">
+                <input type="submit" name="submit" value="Ajouter le produit">
+            <?php } ?>
 
             <?php
-
-
-
-
-
-
             if (isset($_POST['submit'])) {
                 if (isset($_FILES['image'])) {
                     $image = $_FILES['image'];
-                    $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
                     $fichier = $_POST['id-image'];
-                    $fichier = $fichier . "." . $extension;
+                    $extension = strtolower(substr($image['name'], -3));
                     $dossier = '../img/product/';
 
                     if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) {
-                        $sql_insert_image = "INSERT INTO sae203_image VALUES ('$fichier', '$fichier')";
+                        echo $fichier;
+
+                        $sql_insert_image = "INSERT INTO sae203_image VALUES ('$fichier', '$fichier', '$extension')";
                         if (mysqli_query($CONNEXION, $sql_insert_image)) {
                             echo "L'image a bien été ajoutée à la base de données";
                         } else {
@@ -85,7 +73,8 @@
                         echo "Erreur lors du téléchargement de l'image";
                     }
                 }
-                $sql_insert = "INSERT INTO $table_name VALUES (";
+
+                $sql_insert = "INSERT INTO $table_name VALUES (NULL,";
                 foreach ($_POST as $key => $value) {
                     if ($key != "submit") {
                         $sql_insert .= "'" . mysqli_real_escape_string($CONNEXION, $value) . "',";
@@ -94,21 +83,20 @@
 
                 $sql_insert = rtrim($sql_insert, ",");
                 $sql_insert .= ")";
-
+                echo "<p>$sql_insert</p>";
 
                 if (mysqli_query($CONNEXION, $sql_insert)) {
                     echo "<h1>Produit ajouté avec succès</h1>";
                 } else {
                     echo "<h1>Erreur lors de l'ajout du produit</h1>";
+                    echo "<p>Erreur : " . mysqli_error($CONNEXION) . "</p>";
                 }
+
                 mysqli_close($CONNEXION);
+            }
             ?>
         </form>
     </div>
 </body>
 
 </html>
-
-<?php
-            }
-?>

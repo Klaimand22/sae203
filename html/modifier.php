@@ -22,29 +22,29 @@
     $row = mysqli_fetch_assoc($result);
 
 
-?>
+    ?>
     <form action="" method="post">
         <?php
-    echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> <br>";
-    foreach ($row as $key => $value) {
-        if ($key != "id_$nom_categorie" && $key != "sae203_categorie_id_categorie") {
-            echo "<label for=\"$key\">$key :</label>";
-            echo "<input type=\"text\" name=\"$key\" value=\"$value\" required><br>";
+        echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> <br>";
+        foreach ($row as $key => $value) {
+            if ($key != "id_$nom_categorie" && $key != "sae203_categorie_id_categorie") {
+                echo "<label for=\"$key\">$key :</label>";
+                echo "<input type=\"text\" name=\"$key\" value=\"$value\" required><br>";
+            }
         }
-    }
 
-    echo "<button type=\"submit\" name=\"submit\">Modifier</button>";
-
+        echo "<button type=\"submit\" name=\"submit\">Modifier</button>";
 
 
 
 
-?>
+
+        ?>
     </form>
 
     <?php
     require_once('connexion.php');
-    if (isset ($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         $sql_update = "UPDATE sae203_$nom_categorie SET ";
         foreach ($_POST as $key => $value) {
             if ($key != "id_$nom_categorie" && $key != "sae203_categorie_id_categorie" && $key != "submit") {
@@ -58,7 +58,6 @@
         if ($result_update) {
             echo "<h1>Produit modifié</h1>";
             header("Location: $nom_categorie.php");
-
         } else {
             echo "<h1>Erreur lors de la modification</h1>";
         }
@@ -74,9 +73,10 @@
 </body>
 <footer>
 
-<div class="credits">
-                <p> © Michellod - Jandejsek - Triomphe | 2023</p>
-</div>
+    <div class="credits">
+        <p> © Michellod - Jandejsek - Triomphe | 2023</p>
+    </div>
 
 </footer>
+
 </html>
