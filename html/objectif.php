@@ -38,7 +38,13 @@
                 /* Suppression ligne */
                 if (isset($_POST['delete_id'])) {
                     $id = $_POST['delete_id'];
+                    $path = $_POST['path'];
                     mysqli_query($CONNEXION, "DELETE FROM sae203_objectif WHERE id_objectif=$id");
+                    if (unlink("$path")) {
+                        echo "Fichier supprimé";
+                    } else {
+                        echo "Erreur lors de la suppression du fichier";
+                    }
                 }
                 /* Modification ligne */
                 if (isset($_POST['edit_id'])) {
@@ -46,20 +52,25 @@
                     header("Location: modifier.php?id=$id&categorie=$categorie");
                 }
 
+                /* Emprunter */
                 if (isset($_POST['emprunter_id'])) {
                     $id = $_POST['emprunter_id'];
                     header("Location: emprunter.php?id=$id&categorie=$categorie");
                 }
 
 
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_objectif");
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$categorie INNER JOIN sae203_image ON sae203_$categorie.sae203_image_id_image = sae203_image.id_image");
+
+
                 if (mysqli_num_rows($sql) == 0) {
                     echo "Aucun objectif enregistré";
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
+                        $path = "../img/product/" . $row['id_image'] . "." . $row['extension'];
+
                 ?>
                         <tr>
-                            <td class="descriptions"><img src="../img/product/<?= $row['sae203_image_id_image'] ?>.jpg" alt="image"></td>
+                            <td class="descriptions"><img src="<?= $path ?>" alt="image du objectif"></td>
                             <td><?= $row['id_objectif'] ?></td>
                             <td><?= $row['marque'] ?></td>
                             <td><?= $row['modele'] ?></td>
@@ -78,8 +89,9 @@
                                         <button class="borrow" type="submit">Emprunter</button>
                                     </form>
                                     <form class="modifier" method="POST">
+                                        <input type="hidden" name="path" value="<?= $path ?>">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_objectif'] ?>">
-                                        <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                        <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');">Supprimer</button>
                                     </form>
                                 </div>
                             </td>

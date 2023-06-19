@@ -64,7 +64,7 @@
                     exit; // Ajout de cette ligne pour arrêter l'exécution du script après la redirection
                 }
 
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_boitier INNER JOIN sae203_image ON sae203_boitier.sae203_image_id_image = sae203_image.id_image");
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$categorie INNER JOIN sae203_image ON sae203_$categorie.sae203_image_id_image = sae203_image.id_image");
 
 
                 if (mysqli_num_rows($sql) == 0) {

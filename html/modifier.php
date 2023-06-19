@@ -77,7 +77,6 @@
             $result_update = mysqli_query($CONNEXION, $sql_update);
             if ($result_update) {
                 echo "<h1>Produit modifié</h1>";
-                header("Location: $nom_categorie.php");
             } else {
                 echo "<h1>Erreur lors de la modification</h1>";
             }

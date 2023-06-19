@@ -20,7 +20,7 @@
         $id_sae203_categorie = 1;
         $sql = "SELECT * FROM sae203_$nom_categorie WHERE id_$nom_categorie=$id_produit";
 
-        $sql_image = "SELECT * FROM sae203_boitier INNER JOIN sae203_image ON sae203_image.id_image = sae203_boitier.sae203_image_id_image WHERE id_boitier=$id_produit";
+        $sql_image = "SELECT * FROM sae203_$nom_categorie INNER JOIN sae203_image ON sae203_image.id_image = sae203_$nom_categorie.sae203_image_id_image WHERE id_$nom_categorie=$id_produit";
         $result_image = mysqli_query($CONNEXION, $sql_image);
         $row_image = mysqli_fetch_assoc($result_image);
         $path = $row_image['id_image'] . "." . $row_image['extension'];

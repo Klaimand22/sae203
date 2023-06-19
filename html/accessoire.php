@@ -50,16 +50,22 @@
                     $id = $_POST['edit_id'];
                     header("Location: modifier.php?id=$id&categorie=$categorie");
                 }
+                /* Emprunter */
+                if (isset($_POST['emprunter_id'])) {
+                    $id = $_POST['emprunter_id'];
+                    header("Location: emprunter.php?id=$id&categorie=$categorie");
+                }
 
 
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_accessoire");
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$categorie INNER JOIN sae203_image ON sae203_$categorie.sae203_image_id_image = sae203_image.id_image");
                 if (mysqli_num_rows($sql) == 0) {
                     echo "Aucun accessoire enregistré";
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
+                        $path = "../img/product/" . $row['id_image'] . "." . $row['extension'];
                 ?>
                         <tr>
-                            <td class="descriptions"><img src="../img/product/<?= $row['sae203_image_id_image'] ?>.jpg" alt="image"></td>
+                            <td class="descriptions"><img src="<?= $path ?>" alt="image du accessoire"></td>
                             <td><?= $row['id_accessoire'] ?></td>
                             <td><?= $row['marque'] ?></td>
                             <td><?= $row['modele'] ?></td>
@@ -74,8 +80,13 @@
                                         <button class="change" type="submit">Modifier</button>
                                     </form>
                                     <form class="modifier" method="POST">
+                                        <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
+                                        <button class="borrow" type="submit">Emprunter</button>
+                                    </form>
+                                    <form class="modifier" method="POST">
+                                        <input type="hidden" name="path" value="<?= $path ?>">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_accessoire'] ?>">
-                                        <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
+                                        <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');">Supprimer</button>
                                     </form>
                                 </div>
                             </td>

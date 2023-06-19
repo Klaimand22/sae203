@@ -50,16 +50,20 @@
                     $id = $_POST['edit_id'];
                     header("Location: modifier.php?id=$id&categorie=$categorie");
                 }
+                /* Emprunter */
+                if (isset($_POST['emprunter_id'])) {
+                    $id = $_POST['emprunter_id'];
+                    header("Location: emprunter.php?id=$id&categorie=$categorie");
+                }
 
-
-                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_carte_sd");
+                $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$categorie INNER JOIN sae203_image ON sae203_$categorie.sae203_image_id_image = sae203_image.id_image");
                 if (mysqli_num_rows($sql) == 0) {
                     echo "Aucune carte SD enregistrée";
                 } else {
                     while ($row = mysqli_fetch_assoc($sql)) {
                 ?>
                         <tr>
-                            <td class="descriptions"><img src="../img/product/<?=$row['sae203_image_id_image']?>.jpg" alt="image"></td>
+                            <td class="descriptions"><img src="../img/product/<?= $row['sae203_image_id_image'] ?>.jpg" alt="image"></td>
                             <td><?= $row['id_carte_sd'] ?></td>
                             <td><?= $row['marque'] ?></td>
                             <td><?= $row['modele'] ?></td>
@@ -72,11 +76,15 @@
                             <td>
                                 <div>
                                     <!-- bouton modifier -->
-                                    <form  class="modifier" method="POST">
+                                    <form class="modifier" method="POST">
                                         <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
                                         <button class="change" type="submit">Modifier</button>
                                     </form>
-                                    <form  class="modifier" method="POST">
+                                    <form class="modifier" method="POST">
+                                        <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
+                                        <button class="borrow" type="submit">Emprunter</button>
+                                    </form>
+                                    <form class="modifier" method="POST">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_carte_sd'] ?>">
                                         <button class="delete" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?')">Supprimer</button>
                                     </form>
@@ -99,9 +107,10 @@
 </body>
 <footer>
 
-<div class="credits">
-                <p> © Michellod - Jandejsek - Triomphe | 2023</p>
-</div>
+    <div class="credits">
+        <p> © Michellod - Jandejsek - Triomphe | 2023</p>
+    </div>
 
 </footer>
+
 </html>
