@@ -8,3 +8,7 @@ body {
     height : 85%;
 }
 
+.search {
+    display: flex;
+    flex-direction: row;
+}

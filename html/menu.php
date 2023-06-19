@@ -59,24 +59,25 @@
 
     <header>
         <div>
-            <a href=" index.php"><i class="fa-solid fa-house-user"></i>Home /</a><a> <?php
-                                                                                        // Obtient le nom de la page actuelle avec l'extension
-                                                                                        $currentPage = basename($_SERVER['PHP_SELF']);
+            <a href=" index.php"><i class="fa-solid fa-house-user"></i>Home /</a><a>
+                <?php
+                // Obtient le nom de la page actuelle avec l'extension
+                $currentPage = basename($_SERVER['PHP_SELF']);
 
-                                                                                        // Enlève l'extension du nom de fichier
-                                                                                        $currentPageWithoutExtension = pathinfo($currentPage, PATHINFO_FILENAME);
+                // Enlève l'extension du nom de fichier
+                $currentPageWithoutExtension = pathinfo($currentPage, PATHINFO_FILENAME);
 
-                                                                                        // Affiche le nom de la page sans l'extension
-                                                                                        $currentPageWithoutExtension = ucfirst($currentPageWithoutExtension);
-                                                                                        echo $currentPageWithoutExtension;
-                                                                                        ?>
+                // Affiche le nom de la page sans l'extension
+                $currentPageWithoutExtension = ucfirst($currentPageWithoutExtension);
+                echo $currentPageWithoutExtension;
+                ?>
             </a>
         </div>
 
         <div class="search">
             <input type="text" id="searchInput" placeholder="Recherche">
             <i class="fa-solid fa-search"></i>
-            <div id="searchResults"></div>
+            <div id="showdata"></div>
 
         </div>
 
@@ -87,26 +88,16 @@
 
 <script>
     $(document).ready(function() {
-        // Écouteur d'événement pour le champ de recherche
-        $('#searchInput').on('input', function() {
-            // Récupérer la valeur du champ de recherche
-            var searchTerm = $(this).val();
-
-            // Effectuer une requête AJAX
+        $('#searchInput').on("keyup", function() {
+            var getName = $(this).val();
             $.ajax({
-                url: 'search.php',
-                method: 'GET',
+                method: 'POST',
+                url: 'searchbar.php',
                 data: {
-                    search: searchTerm
+                    name: getName
                 },
-                dataType: 'json',
-                success: function(data) {
-                    // Afficher les résultats dans la console du navigateur
-                    console.log(data);
-                },
-                error: function(xhr, status, error) {
-                    // Afficher une erreur en cas de problème avec la requête AJAX
-                    console.log('Erreur AJAX:', status, error);
+                success: function(response) {
+                    $("#showdata").html(response);
                 }
             });
         });
