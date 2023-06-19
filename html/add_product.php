@@ -38,12 +38,17 @@
                 while ($column = mysqli_fetch_assoc($result_columns)) {
                     $column_name = $column['Field'];
 
-                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "date_mise_en_service") {
+                    if ($column_name != "id_$nom_categorie" && $column_name != "sae203_categorie_id_categorie" && $column_name != "sae203_image_id_image" && $column_name != "disponible" && $column_name != "date_mise_en_service") {
                         echo "<label for=\"$column_name\">$column_name :</label>";
                         echo "<input type=\"text\" name=\"$column_name\" required>";
                     }
                 }
             ?>
+                <label for="disponible">Disponible :</label>
+                <select name="disponible" id="disponible">
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                </select>
                 <label for="date_mise_en_service">Date de mise en service :</label>
                 <input type="date" name="date_mise_en_service" required>
                 <input type="hidden" name="sae203_categorie_id_categorie" value="<?php echo $id_categorie ?>">
@@ -74,7 +79,9 @@
                     }
                 }
 
-                $sql_insert = "INSERT INTO $table_name VALUES ('',";
+
+                $sql_insert = "";
+                $sql_insert = "INSERT INTO $table_name VALUES (NULL,";
                 foreach ($_POST as $key => $value) {
                     if ($key != "submit") {
                         $sql_insert .= "'" . mysqli_real_escape_string($CONNEXION, $value) . "',";

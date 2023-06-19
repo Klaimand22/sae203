@@ -13,34 +13,38 @@
 
 <body>
     <div class="emprunt">
-        <h1>Emprunter un boitier</h1>
-
         <?php
         require_once('connexion.php');
         $id_produit = $_GET['id'];
         $nom_categorie = $_GET['categorie'];
         $id_sae203_categorie = 1;
         $sql = "SELECT * FROM sae203_$nom_categorie WHERE id_$nom_categorie=$id_produit";
+
+        $sql_image = "SELECT * FROM sae203_boitier INNER JOIN sae203_image ON sae203_image.id_image = sae203_boitier.sae203_image_id_image WHERE id_boitier=$id_produit";
+        $result_image = mysqli_query($CONNEXION, $sql_image);
+        $row_image = mysqli_fetch_assoc($result_image);
+        $path = $row_image['id_image'] . "." . $row_image['extension'];
+
         $result = mysqli_query($CONNEXION, $sql);
         $row = mysqli_fetch_assoc($result);
 
         ?>
-        <h2> Emprunt du <?php echo $nom_categorie ?> <?php echo $id_produit ?></h2>
-        <p>Marque : <?php echo $row['marque'] ?></p>
-        <p>Modèle : <?php echo $row['modele'] ?></p>
-        <p>Description : <?php echo $row['description'] ?></p>
-        <p>Référence : <?php echo $row['reference'] ?></p>
-        <p>Disponible : <?php if ($row['disponible'] == 1) {
-                            echo "Oui";
-                        } else {
-                            echo "Non";
-                        } ?></p>
+        <h2> Emprunt du <?php echo $nom_categorie ?> </h2>
+        <img src="../img/product/<?= $path ?>" alt="image du produit">
 
-        <div class="image">
-            <img src="<?php echo $row['image'] ?>" alt="image du boitier" width="200px">
+        <div class="info-product">
+            <p>Marque : <?php echo $row['marque'] ?></p>
+            <p>Modèle : <?php echo $row['modele'] ?></p>
+            <p>Description : <?php echo $row['description'] ?></p>
+            <p>Disponible : <?php if ($row['disponible'] == 1) {
+                                echo "Oui";
+                            } else {
+                                echo "Non";
+                            } ?></p>
         </div>
 
         <!-- selectionner un client  -->
+
 
 
         <form action="" method="POST">
@@ -54,7 +58,7 @@
                 $sql = "SELECT * FROM sae203_client";
                 $result = mysqli_query($CONNEXION, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<option value='" . $row['id_client'] . "'>" . $row['nom'] . "</option>";
+                    echo "<option value='" . $row['id_client'] . "'>" . $row['nom'] . " " . $row['prenom'] . "</option>";
                 }
                 ?>
             </select>
@@ -69,7 +73,6 @@
 
 
 
-
             <?php
 
             if (isset($_POST['submit'])) {
@@ -80,6 +83,7 @@
                 $date_debut = $_POST['date_debut'];
                 $date_fin = $_POST['date_fin'];
             ?>
+
                 <p>Emprunt du <?php echo $nom_categorie ?> <?php echo $id_produit ?></p>
                 <p>Client : <?php echo $sae203_client_id_client ?></p>
                 <p>Date de début : <?php echo $date_debut ?></p>

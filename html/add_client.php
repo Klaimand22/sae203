@@ -9,70 +9,71 @@
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/add_form.css">
     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/list_form.css">
+    <link rel="stylesheet" href="../css/add_client.css">
+
 
 
 </head>
 <?php include('menu.php'); ?>
 
 <body>
-    <div class="tableau-client">
+    <div class="add-client">
         <div class="form">
             <h2>Ajouter des clients</h2>
             <form action="add_client.php" method="post">
                 <label for="nom">Nom</label>
-                <input type="text" name="nom" id="nom">
+                <input type="text" name="nom" id="nom" required>
                 <label for="prenom">Prénom</label>
-                <input type="text" name="prenom" id="prenom">
+                <input type="text" name="prenom" id="prenom" required>
                 <label for="adresse">Adresse</label>
-                <input type="text" name="adresse" id="adresse">
+                <input type="text" name="adresse" id="adresse" required>
                 <label for="telephone">Téléphone</label>
-                <input type="text" name="telephone" id="telephone">
+                <input type="text" name="telephone" id="telephone" required>
                 <label for="age">Âge</label>
-                <input type="text" name="age" id="age">
+                <input type="number" name="age" id="age" required>
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email">
+                <input type="text" name="email" id="email" required>
                 <input type="submit" value="Ajouter">
                 <a href="client.php">Retour</a>
             </form>
         </div>
 
+
+
+
+        <?php
+
+
+
+        require_once('connexion.php');
+
+        if (isset($_POST['nom'])) {
+            $sql_insert = "INSERT INTO sae203_client (id_client, nom, prenom, adresse, telephone, age, email) VALUES (NULL, ";
+
+            foreach ($_POST as $key => $value) {
+                if ($key != "submit") {
+                    $sql_insert .= "'$value', ";
+                }
+            }
+
+            $sql_insert = substr($sql_insert, 0, -2);
+            $sql_insert .= ")";
+
+            $result_insert = mysqli_query($CONNEXION, $sql_insert);
+
+            if ($result_insert) {
+                echo "<h3>Client ajouté avec succès</h3>";
+            } else {
+                echo "<h3>Erreur</h3>";
+                echo "Erreur: " . mysqli_error($CONNEXION);
+            }
+        }
+
+
+        ?>
     </div>
 
 </body>
-
-<?php
-
-
-
-require_once('connexion.php');
-
-if (isset($_POST['nom'])) {
-    $sql_insert = "INSERT INTO sae203_client (id_client, nom, prenom, adresse, telephone, age, email) VALUES (NULL, ";
-
-    foreach ($_POST as $key => $value) {
-        if ($key != "submit") {
-            $sql_insert .= "'$value', ";
-        }
-    }
-
-    $sql_insert = substr($sql_insert, 0, -2);
-    $sql_insert .= ")";
-
-    $result_insert = mysqli_query($CONNEXION, $sql_insert);
-
-    var_dump($sql_insert);
-    if ($result_insert) {
-        echo "<h1>Client ajouté</h1>";
-    } else {
-        echo "<h1>Erreur</h1>";
-        echo "Erreur: " . mysqli_error($CONNEXION);
-    }
-}
-
-
-?>
 
 </html>

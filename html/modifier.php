@@ -32,11 +32,29 @@
             <?php
             echo "<input type=\"hidden\" name=\"id_$nom_categorie\" value=\"\"> <br>";
             foreach ($row as $key => $value) {
-                if ($key != "id_$nom_categorie" && $key != "sae203_categorie_id_categorie") {
+                if ($key != "id_$nom_categorie" && $key != "sae203_categorie_id_categorie" && $key != "disponible" && $key != "date_mise_en_service" && $key != "sae203_image_id_image") {
                     echo "<label for=\"$key\">$key :</label>";
                     echo "<input type=\"text\" name=\"$key\" value=\"$value\" required><br>";
                 }
             }
+
+            if ($nom_categorie != "client") {
+                echo "<label for=\"disponible\">Disponible :</label>";
+                echo "<select name=\"disponible\" id=\"disponible\">";
+                if ($row['disponible'] == 1) {
+                    echo "<option value=\"1\" selected>Oui</option>";
+                    echo "<option value=\"0\">Non</option>";
+                } else {
+                    echo "<option value=\"1\">Oui</option>";
+                    echo "<option value=\"0\" selected>Non</option>";
+                }
+                echo "</select><br>";
+                echo "<label for=\"date_mise_en_service\">Date de mise en service :</label>";
+                echo "<input type=\"date\" name=\"date_mise_en_service\" value=\"" . $row['date_mise_en_service'] . "\" required><br>";
+            }
+
+
+
 
             echo "<button type=\"submit\" name=\"submit\">Modifier</button>";
 

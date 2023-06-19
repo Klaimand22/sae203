@@ -6,6 +6,7 @@
     width: 80%;
     height: 80%;
     justify-content: center;
+    margin-top: 50px;
 
 }
 
@@ -20,11 +21,21 @@
     text-align: center;
     font-size: 1.5em;
     margin-bottom: 2%;
+    margin-top: 12%;
 }
 
 .emprunt p {
     text-align: center;
     font-size: 1.2em;
+    text-align: start;
+}
+
+.emprunt .info-product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
 }
 
 .emprunt form {
@@ -76,12 +87,7 @@
     color: white;
 }
 
-.image {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .emprunt a {
     background-color: #f8faf8;
@@ -104,4 +110,12 @@
 .emprunt a:hover {
     background-color: #4f4d4d;
     color: white;
+}
+
+.emprunt img {
+width: 200px;
+height: 200px;
+align-items: center;
+margin-left: 42%;
+margin-bottom: 5%;
 }

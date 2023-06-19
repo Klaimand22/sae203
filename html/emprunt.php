@@ -14,15 +14,11 @@
 
     <?php
     include_once "connexion.php";
-
-
-
     if (isset($_POST['categorie'])) {
         $categorie = $_POST['categorie'];
     } else { // Si on arrive sur la page sans passer par le formulaire
         $categorie = str_replace('.php', '', basename($_SERVER['SCRIPT_NAME']));
     }
-
     /* Suppression ligne */
     if (isset($_POST['delete_id'])) {
         if (isset($_POST['categorie'])) {
@@ -31,7 +27,6 @@
             mysqli_query($CONNEXION, "DELETE FROM sae203_emprunt WHERE id_emprunt = '$id'");
         }
     }
-
     /* Modification ligne */
     if (isset($_POST['edit_id'])) {
         $id = $_POST['edit_id'];
@@ -43,12 +38,7 @@
 
 </head>
 
-
-
 <body><?php include('menu.php'); ?>
-
-
-
 
     <div class="tableau-client">
         <h1>Liste des emprunts</h1>
@@ -96,10 +86,7 @@
                             <td>
                                 <div>
 
-                                    <form class="modifier" action="" method="POST">
-                                        <input type="hidden" name="edit_id" value="<?= $row['id_emprunt'] ?>">
-                                        <button class="change" type="submit" class="btn btn-primary">Modifier</button>
-                                    </form>
+
                                     <form class="modifier" action="" method="POST">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_emprunt'] ?>">
                                         <input type="hidden" name="categorie" value="<?= $row['categorie'] ?>">

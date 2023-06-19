@@ -75,7 +75,7 @@
                         $path = "../img/product/" . $row['id_image'] . "." . $row['extension'];
                 ?>
                         <tr class="table">
-                            <td class="descriptions"><img src="<?=$path ?>" alt="image du boitier"></td>
+                            <td class="descriptions"><img src="<?= $path ?>" alt="image du boitier"></td>
                             <td class="descriptions"><?= $row['id_boitier'] ?></td>
                             <td class="descriptions"><?= $row['marque'] ?></td>
                             <td class="descriptions"><?= $row['modele'] ?></td>
