@@ -60,7 +60,7 @@
                     $extension = strtolower(substr($image['name'], -3));
                     $dossier = '../img/product/';
 
-                    if (move_uploaded_file($image['tmp_name'], $dossier . $fichier)) {
+                    if (move_uploaded_file($image['tmp_name'], $dossier . $fichier . '.' . $extension)) {
                         echo $fichier;
 
                         $sql_insert_image = "INSERT INTO sae203_image VALUES ('$fichier', '$fichier', '$extension')";
@@ -74,7 +74,7 @@
                     }
                 }
 
-                $sql_insert = "INSERT INTO $table_name VALUES (NULL,";
+                $sql_insert = "INSERT INTO $table_name VALUES ('',";
                 foreach ($_POST as $key => $value) {
                     if ($key != "submit") {
                         $sql_insert .= "'" . mysqli_real_escape_string($CONNEXION, $value) . "',";
