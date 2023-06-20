@@ -54,9 +54,11 @@
 
 
 
-            echo "<button type=\"submit\" name=\"submit\">Modifier</button>";
+
 
             ?>
+        <button type="submit" name="submit" onclick="windows.location.href='$nom_categorie.php'">Modifier</button>
+
 
         </form>
 

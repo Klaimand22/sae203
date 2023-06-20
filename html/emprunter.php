@@ -69,9 +69,11 @@
             <br>
             <label for="date_fin">Date de fin</label>
             <input type="date" name="date_fin" id="date_fin" required>
-            <button type="submit" name="submit">Emprunter</button>
+
+            <button type="submit" name="submit" onclick="window.location.href='<?= $nom_categorie ?>.php'">Emprunter</button>
 
 
+            </form>
 
             <?php
 
@@ -105,9 +107,10 @@
                     echo "Erreur : " . mysqli_error($CONNEXION);
                 }
             }
+
             ?>
 
-        </form>
+
 
 
 
