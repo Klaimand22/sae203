@@ -24,9 +24,36 @@
         if (isset($_POST['categorie'])) {
             $categorie = $_POST['categorie'];
             $id = $_POST['delete_id'];
-            mysqli_query($CONNEXION, "DELETE FROM sae203_emprunt WHERE id_emprunt = '$id'");
+
+            // Mettre à jour la disponibilité dans la table correspondante
+            $sql = "SELECT*
+            FROM
+                sae203_emprunt emp
+                JOIN sae203_categorie cat ON emp.sae203_categorie_id_categorie = cat.id_categorie
+                JOIN sae203_client cli ON emp.sae203_client_id_client = cli.id_client
+                JOIN sae203_$categorie prod ON emp.id_produit = prod.id_$categorie;
+            ";
+
+            $result = mysqli_query($CONNEXION, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $id_produit = $row['id_produit'];
+            $updateQuery = "UPDATE sae203_$categorie SET disponible = 1 WHERE id_$categorie = $id_produit";
+            $updateStmt = mysqli_prepare($CONNEXION, $updateQuery);
+            mysqli_stmt_execute($updateStmt);
+
+
+            // Supprimer l'emprunt de la table sae203_emprunt
+            $deleteQuery = "DELETE FROM sae203_emprunt WHERE id_emprunt = ?";
+            $deleteStmt = mysqli_prepare($CONNEXION, $deleteQuery);
+            mysqli_stmt_bind_param($deleteStmt, "i", $id);
+            mysqli_stmt_execute($deleteStmt);
         }
     }
+
+
+
+
+
     /* Modification ligne */
     if (isset($_POST['edit_id'])) {
         $id = $_POST['edit_id'];

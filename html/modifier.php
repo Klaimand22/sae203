@@ -71,7 +71,6 @@
             }
             $sql_update = substr($sql_update, 0, -2);
             $sql_update .= " WHERE id_$nom_categorie = $id";
-            echo $sql_update;
             $result_update = mysqli_query($CONNEXION, $sql_update);
             if ($result_update) {
                 echo "<h1>Produit modifié</h1>";

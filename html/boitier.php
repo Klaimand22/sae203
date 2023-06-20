@@ -66,6 +66,8 @@
 
                 $sql = mysqli_query($CONNEXION, "SELECT * FROM sae203_$categorie INNER JOIN sae203_image ON sae203_$categorie.sae203_image_id_image = sae203_image.id_image");
 
+                $disponible = mysqli_query($CONNEXION, "SELECT disponible FROM sae203_$categorie");
+
 
                 if (mysqli_num_rows($sql) == 0) {
                     echo "Aucun boitier enregistré";
@@ -89,11 +91,15 @@
                                         <input type="hidden" name="edit_id" value="<?= $row["id_$categorie"] ?>">
                                         <button class="change" type="submit">Modifier</button>
                                     </form>
-                                    <form class="modifier" method="POST">
-                                        <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
-                                        <input type="hidden" name="categorie" value="<?= $categorie ?>">
-                                        <button class="borrow" type="submit">Emprunter</button>
-                                    </form>
+                                    <?php if ($row['disponible'] == 1) { ?>
+                                        <!-- bouton emprunter -->
+                                        <form class="modifier" method="POST">
+                                            <input type="hidden" name="emprunter_id" value="<?= $row["id_$categorie"] ?>">
+                                            <input type="hidden" name="categorie" value="<?= $categorie ?>">
+                                            <button class="borrow" type="submit">Emprunter</button>
+                                        </form>
+                                    <?php } ?>
+
                                     <form class="modifier" method="POST">
                                         <input type="hidden" name="path" value="<?= $path ?>">
                                         <input type="hidden" name="delete_id" value="<?= $row['id_boitier'] ?>">

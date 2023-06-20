@@ -67,7 +67,6 @@
                     $dossier = '../img/product/';
 
                     if (move_uploaded_file($image['tmp_name'], $dossier . $fichier . '.' . $extension)) {
-                        echo $fichier;
 
                         $sql_insert_image = "INSERT INTO sae203_image VALUES ('$fichier', '$fichier', '$extension')";
                         if (mysqli_query($CONNEXION, $sql_insert_image)) {
@@ -91,7 +90,7 @@
 
                 $sql_insert = rtrim($sql_insert, ",");
                 $sql_insert .= ")";
-                echo "<p>$sql_insert</p>";
+
 
                 if (mysqli_query($CONNEXION, $sql_insert)) {
                     echo "<h1>Produit ajouté avec succès</h1>";
