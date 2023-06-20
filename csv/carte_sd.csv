@@ -1,5 +1,8 @@
-1;SanDisk;Ultra;128;10;Carte mémoire SDXC;SDSQUAR-128G-GN6MA;80 Mo/s;1;07/05/2023;3
-2;Samsung;EVO Select;256;10;Carte mémoire microSDXC;MB-ME256HA/AM;90 Mo/s;1;07/05/2023;3
-3;Lexar;Professional 1667x;64;10;Carte mémoire SDXC UHS-II;LSD64GCB1667;150 Mo/s;1;07/05/2023;3
-4;Kingston;Canvas Select Plus;32;10;Carte mémoire microSDHC;SDCS2/32GB;80 Mo/s;1;07/05/2023;3
-5;Transcend;SDXC/SDHC 700S;128;10;Carte mémoire SDXC UHS-II;TS128GSDC700S;285 Mo/s;1;07/05/2023;3
+1,SanDisk,Extreme Pro,64GB,Class 10,Ultra haute vitesse de transfert,90MB/s,1,2020-03-01,3,201
+2,Samsung,EVO Plus,128GB,Class 10,Ultra haute vitesse de transfert,100MB/s,1,2019-06-15,3,202
+3,Lexar,Professional,256GB,Class 10,Ultra haute vitesse de transfert,150MB/s,1,2021-01-10,3,203
+4,Kingston,Canvas Select Plus,32GB,Class 10,Vitesse de transfert élevée,80MB/s,1,2018-09-05,3,204
+5,Sony,Tough,128GB,Class 10,Résistante aux chocs et à l'eau,299MB/s,1,2020-07-20,3,205
+6,Transcend,High Endurance,64GB,Class 10,Conçue pour la vidéo de surveillance,40MB/s,1,2021-11-30,3,206
+7,Samsung,PRO Endurance,256GB,Class 10,Conçue pour la vidéo de surveillance,100MB/s,1,2019-12-01,3,207
+8,SanDisk,Ultra,16GB,Class 10,Vitesse de transfert standard,40MB/s,1,2022-04-10,3,208
