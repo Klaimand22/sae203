@@ -1,12 +1,14 @@
 .emprunt {
     margin-left: 10%;
-    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     width: 80%;
-    height: 80%;
+    height: 70%;
     justify-content: center;
     margin-top: 50px;
+    background-color: #82b691;
+    border-radius: 3%;
+    box-shadow: 7px 7px 3px rgb(79, 77, 77);  
 
 }
 
@@ -15,13 +17,14 @@
     font-size: 2em;
     margin-bottom: 2%;
     margin-top: 2%;
+
 }
 
 .emprunt h2 {
     text-align: center;
     font-size: 1.5em;
     margin-bottom: 2%;
-    margin-top: 12%;
+    margin-top: 13%;
 }
 
 .emprunt p {
@@ -51,6 +54,7 @@
     border-radius: 5%;
     border: 1px solid rgb(0, 0, 0);
     padding-left: 2%;
+    margin-bottom: 3%;
 }
 
 .emprunt label {
@@ -113,9 +117,11 @@
 }
 
 .emprunt img {
-width: 200px;
-height: 200px;
+margin-top: 1%;
+width: 170px;
+height: 170px;
 align-items: center;
 margin-left: 42%;
 margin-bottom: 5%;
+object-fit: cover;
 }

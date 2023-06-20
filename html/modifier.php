@@ -19,9 +19,7 @@
 
         require_once('connexion.php');
         $id = $_GET['id'];
-        echo $id;
         $nom_categorie = $_GET['categorie'];
-        echo $nom_categorie;
         $sql = "SELECT * FROM sae203_$nom_categorie WHERE id_$nom_categorie=$id";
         $result = mysqli_query($CONNEXION, $sql);
         $row = mysqli_fetch_assoc($result);

@@ -6,12 +6,28 @@ label {
     display: block;
     margin-top: 10px;
 }
-
+.background{
+    background-color:   #82b691;
+    padding: 5%;
+    border-radius: 3%;
+    box-shadow: 7px 7px 3px rgb(79, 77, 77);    
+}
 input {
     width: 100%;
     border: 1px solid #000;
     border-radius: 5px;
     padding: 5px;
+    background-color: #f8faf8;
+    border-radius: 10px;
+    border: solid 2px rgb(79, 77, 77);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 3px 1px rgb(79, 77, 77);
+    cursor: pointer;
+    transition: ease-in-out 20ms;
+    justify-content: center;
+    align-items: center;
 
 }
 

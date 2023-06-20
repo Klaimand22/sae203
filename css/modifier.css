@@ -13,7 +13,8 @@
     text-align: center;
     font-size: 2em;
     margin-bottom: 2%;
-    margin-top: 2%;
+    margin-top: 8%;
+
 }
 
 .modifier h2 {
@@ -32,6 +33,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color:   #82b691;
+    border-radius: 3%;
+    box-shadow: 7px 7px 3px rgb(79, 77, 77); 
+    width:50%;
+    margin-left: 25%
 }
 .modifier input {
     width: 50%;
@@ -40,6 +46,20 @@
     border-radius: 5%;
     border: 1px solid rgb(0, 0, 0);
     padding-left: 2%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 1px;
+    background-color: #f8faf8;
+    border-radius: 10px;
+    border: solid 2px rgb(79, 77, 77);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 3px 1px rgb(79, 77, 77);
+    cursor: pointer;
+    transition: ease-in-out 20ms;
+    justify-content: center;
+    align-items: center;
 }
 
 .modifier label {
@@ -64,7 +84,7 @@
     justify-content: center;
     box-shadow: 5px 3px 1px rgb(79, 77, 77);
     cursor: pointer;
-    width : 10%;
+    width : 20%;
     transition: ease-in-out 20ms;
     text-decoration: none;
     color: black;
@@ -97,7 +117,7 @@
     transition: ease-in-out 20ms;
     text-decoration: none;
     color: black;
-    margin-bottom: 5%;
+    margin-top:8%;
 
 }
 
