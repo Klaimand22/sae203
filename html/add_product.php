@@ -32,6 +32,7 @@
 
         <h3>Remplissez les champs suivants</h3>
 
+        <div class=background>
         <form method="POST" action="" enctype="multipart/form-data">
             <?php
             if (mysqli_num_rows($result_columns) > 0) {
@@ -103,6 +104,7 @@
             }
             ?>
         </form>
+        </div>
     </div>
 </body>
 
